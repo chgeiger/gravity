@@ -9,7 +9,6 @@ Gravity_autogen/timestamp: \
 	/home/chris/devel/gravity/src/mainwindow.h \
 	/home/chris/devel/gravity/src/spherewidget.cpp \
 	/home/chris/devel/gravity/src/spherewidget.h \
-	/usr/include/GL/gl.h \
 	/usr/include/alloca.h \
 	/usr/include/asm-generic/bitsperlong.h \
 	/usr/include/asm-generic/errno-base.h \
@@ -178,7 +177,6 @@ Gravity_autogen/timestamp: \
 	/usr/include/errno.h \
 	/usr/include/features-time64.h \
 	/usr/include/features.h \
-	/usr/include/inttypes.h \
 	/usr/include/limits.h \
 	/usr/include/linux/errno.h \
 	/usr/include/linux/limits.h \
@@ -272,7 +270,25 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtCore/QTimer \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/QEntity \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qentity.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnode.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnodeid.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore-config.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore_global.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/Qt3DWindow \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dextras_global.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dwindow.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qrenderapi.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender-config.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender_global.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMargins \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaType \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20functional.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20iterator.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20memory.h \
@@ -287,7 +303,6 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasictimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbindingstorage.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
@@ -304,6 +319,7 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerinfo.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdarwinhelpers.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
@@ -379,7 +395,6 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtdeprecationmarkers.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtenvironmentvariables.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtnoop.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtpreprocessorsupport.h \
@@ -396,10 +411,7 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qxptype_traits.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qyieldcpu.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/QMatrix4x4 \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/QOpenGLFunctions \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/QSurfaceFormat \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/QVector3D \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/QWindow \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -408,45 +420,26 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontinfo.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontmetrics.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qgenericmatrix.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qmatrix4x4.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopengl.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext_platform.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglext.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglfunctions.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixelformat.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixmap.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpolygon.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qquaternion.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qregion.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qrgb.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qrgba64.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qsurface.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qsurfaceformat.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtgui-config.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector3d.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector4d.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/QOpenGLShaderProgram \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopenglshaderprogram.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/QOpenGLWidget \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qopenglwidget.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsexports.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
-	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
@@ -503,6 +496,56 @@ Gravity_autogen/timestamp: \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6/QtPublicTestHelpers.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6/QtPublicToolHelpers.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6/QtPublicWalkLibsHelpers.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DCore/Qt63DCoreVersionlessAliasTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DExtras/Qt63DExtrasVersionlessAliasTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputPlugins.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DInput/Qt63DInputVersionlessAliasTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DLogic/Qt63DLogicVersionlessAliasTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderPlugins.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt63DRender/Qt63DRenderVersionlessAliasTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Concurrent/Qt6ConcurrentVersionlessAliasTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreConfig.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreConfigExtras.cmake \
@@ -554,6 +597,14 @@ Gravity_autogen/timestamp: \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsTargets-none.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfig.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake \
@@ -562,14 +613,6 @@ Gravity_autogen/timestamp: \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLTargets-none.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLVersionlessAliasTargets.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfig.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersion.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersionImpl.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsDependencies.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-none.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets.cmake \
-	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessAliasTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake \

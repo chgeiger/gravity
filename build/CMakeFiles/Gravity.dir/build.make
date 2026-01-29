@@ -151,12 +151,18 @@ Gravity: CMakeFiles/Gravity.dir/src/mainwindow.cpp.o
 Gravity: CMakeFiles/Gravity.dir/src/spherewidget.cpp.o
 Gravity: CMakeFiles/Gravity.dir/build.make
 Gravity: CMakeFiles/Gravity.dir/compiler_depend.ts
-Gravity: /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.8.2
 Gravity: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.2
+Gravity: /usr/lib/x86_64-linux-gnu/libQt63DExtras.so.6.8.2
+Gravity: /usr/lib/x86_64-linux-gnu/libQt63DRender.so.6.8.2
 Gravity: /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.8.2
+Gravity: /usr/lib/x86_64-linux-gnu/libQt63DInput.so.6.8.2
+Gravity: /usr/lib/x86_64-linux-gnu/libQt63DLogic.so.6.8.2
+Gravity: /usr/lib/x86_64-linux-gnu/libQt63DCore.so.6.8.2
 Gravity: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.8.2
 Gravity: /usr/lib/x86_64-linux-gnu/libGLX.so
 Gravity: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+Gravity: /usr/lib/x86_64-linux-gnu/libQt6Concurrent.so.6.8.2
+Gravity: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.8.2
 Gravity: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.2
 Gravity: CMakeFiles/Gravity.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Gravity"

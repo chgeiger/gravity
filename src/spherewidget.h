@@ -1,40 +1,39 @@
 #ifndef SPHEREWIDGET_H
 #define SPHEREWIDGET_H
 
-#include <QOpenGLWidget>
-#include <QOpenGLFunctions>
-#include <QMatrix4x4>
-#include <QVector3D>
-#include <QTimer>
-#include <QOpenGLShaderProgram>
+#include <Qt3DExtras/Qt3DWindow>
+#include <Qt3DCore/QEntity>
 
-class SphereWidget : public QOpenGLWidget, protected QOpenGLFunctions {
+QT_BEGIN_NAMESPACE
+namespace Qt3DCore {
+    class QTransform;
+}
+namespace Qt3DExtras {
+    class QSphereMesh;
+    class QPhongMaterial;
+}
+namespace Qt3DRender {
+    class QPointLight;
+}
+QT_END_NAMESPACE
+
+class SphereWidget : public Qt3DExtras::Qt3DWindow {
     Q_OBJECT
 
 public:
-    SphereWidget(QWidget *parent = nullptr);
-    ~SphereWidget();
-
-protected:
-    void initializeGL() override;
-    void resizeGL(int w, int h) override;
-    void paintGL() override;
+    SphereWidget();
+    ~SphereWidget() = default;
 
 private slots:
-    void updateRotation();
+    void updateFrame();
 
 private:
-    void createSphere();
-    void createShaderProgram();
+    Qt3DCore::QEntity *createScene();
+    void createSphere(Qt3DCore::QEntity *rootEntity);
+    void createLighting(Qt3DCore::QEntity *rootEntity);
 
-    QMatrix4x4 projection;
-    QMatrix4x4 view;
-    QMatrix4x4 model;
-    float rotation;
-    GLuint VAO, VBO, EBO;
-    GLuint vertexCount;
-    QTimer *timer;
-    QOpenGLShaderProgram *shaderProgram;
+    Qt3DCore::QTransform *sphereTransform;
+    float rotationAngle;
 };
 
 #endif // SPHEREWIDGET_H

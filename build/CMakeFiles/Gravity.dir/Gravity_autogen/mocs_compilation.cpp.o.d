@@ -393,37 +393,34 @@ CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtmochelpers.h \
  /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/moc_spherewidget.cpp \
  /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/../../../src/spherewidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/QOpenGLWidget \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qopenglwidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsglobal.h \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsexports.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/QSurfaceFormat \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qsurfaceformat.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qopengl.h /usr/include/GL/gl.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglext.h \
- /usr/include/inttypes.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/QOpenGLFunctions \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglfunctions.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/Qt3DWindow \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dwindow.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dextras_global.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore_global.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore-config.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qrenderapi.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender_global.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender-config.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QWindow \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindow.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMargins \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmargins.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext_platform.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/QMatrix4x4 \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qmatrix4x4.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qvector3d.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qvector4d.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qquaternion.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qgenericmatrix.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/QVector3D \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QTimer \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qtimer.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qbasictimer.h \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/QOpenGLShaderProgram \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopenglshaderprogram.h \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
- /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qmatrix4x4.h
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qsurface.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qsurfaceformat.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/QEntity \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qentity.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnode.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnodeid.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaType \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h

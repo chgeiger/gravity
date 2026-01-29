@@ -6,7 +6,6 @@
  mmc:Q_OBJECT
  mdp:/home/chris/devel/gravity/build/Gravity_autogen/moc_predefs.h
  mdp:/home/chris/devel/gravity/src/spherewidget.h
- mdp:/usr/include/GL/gl.h
  mdp:/usr/include/alloca.h
  mdp:/usr/include/asm-generic/bitsperlong.h
  mdp:/usr/include/asm-generic/errno-base.h
@@ -175,7 +174,6 @@
  mdp:/usr/include/errno.h
  mdp:/usr/include/features-time64.h
  mdp:/usr/include/features.h
- mdp:/usr/include/inttypes.h
  mdp:/usr/include/limits.h
  mdp:/usr/include/linux/errno.h
  mdp:/usr/include/linux/limits.h
@@ -269,7 +267,25 @@
  mdp:/usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QTimer
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/QEntity
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qentity.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnode.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnodeid.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore-config.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore_global.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/Qt3DWindow
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dextras_global.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dwindow.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qrenderapi.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender-config.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender_global.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QMargins
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaType
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QRect
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/q20functional.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/q20iterator.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/q20memory.h
@@ -284,7 +300,6 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasictimer.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qbindingstorage.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h
@@ -301,10 +316,10 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerinfo.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qdarwinhelpers.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qendian.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qexceptionhandling.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qfloat16.h
@@ -376,7 +391,6 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtdeprecationmarkers.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtenvironmentvariables.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtimer.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtnoop.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtpreprocessorsupport.h
@@ -388,66 +402,31 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypes.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qxptype_traits.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qyieldcpu.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QMatrix4x4
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QOpenGLFunctions
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QSurfaceFormat
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QVector3D
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QWindow
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qcolor.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qcursor.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontinfo.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontmetrics.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qgenericmatrix.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qmatrix4x4.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qopengl.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext_platform.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglext.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglfunctions.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixelformat.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixmap.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qpolygon.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qquaternion.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qregion.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qrgb.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qrgba64.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qsurface.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qsurfaceformat.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtgui-config.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector3d.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector4d.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindow.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/QOpenGLShaderProgram
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopenglshaderprogram.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/QOpenGLWidget
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qopenglwidget.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsexports.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsglobal.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgets-config.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsexports.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  mdp:/usr/include/x86_64-linux-gnu/sys/cdefs.h
  mdp:/usr/include/x86_64-linux-gnu/sys/select.h
  mdp:/usr/include/x86_64-linux-gnu/sys/types.h

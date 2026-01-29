@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets 3DCore 3DRender 3DInput 3DExtras REQUIRED)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
@@ -20,6 +20,8 @@ target_link_libraries(${PROJECT_NAME}
     Qt6::Core
     Qt6::Gui
     Qt6::Widgets
-    Qt6::OpenGL
-    Qt6::OpenGLWidgets
+    Qt6::3DCore
+    Qt6::3DRender
+    Qt6::3DInput
+    Qt6::3DExtras
 )
