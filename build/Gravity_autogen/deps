@@ -9,6 +9,7 @@ Gravity_autogen/timestamp: \
 	/home/chris/devel/gravity/src/mainwindow.h \
 	/home/chris/devel/gravity/src/spherewidget.cpp \
 	/home/chris/devel/gravity/src/spherewidget.h \
+	/usr/include/GL/gl.h \
 	/usr/include/alloca.h \
 	/usr/include/asm-generic/bitsperlong.h \
 	/usr/include/asm-generic/errno-base.h \
@@ -177,6 +178,7 @@ Gravity_autogen/timestamp: \
 	/usr/include/errno.h \
 	/usr/include/features-time64.h \
 	/usr/include/features.h \
+	/usr/include/inttypes.h \
 	/usr/include/limits.h \
 	/usr/include/linux/errno.h \
 	/usr/include/linux/limits.h \
@@ -276,19 +278,35 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qnodeid.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore-config.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qt3dcore_global.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/QForwardRenderer \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/Qt3DWindow \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qforwardrenderer.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dextras_global.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qt3dwindow.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/QAbstractTexture \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/QClearBuffers \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qabstracttexture.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qclearbuffers.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qframegraphnode.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qrenderapi.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qrendertargetoutput.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender-config.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qt3drender_global.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtechniquefilter.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtextureimagedata.h \
+	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtexturewrapmode.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QFlags \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMargins \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaType \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QRectF \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QScopedPointer \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QSharedPointer \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20functional.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20iterator.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20memory.h \
@@ -411,6 +429,8 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qxptype_traits.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qyieldcpu.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/QImage \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/QWindow \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
@@ -423,6 +443,8 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopengl.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglext.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixelformat.h \
@@ -439,6 +461,9 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopengltexture.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \

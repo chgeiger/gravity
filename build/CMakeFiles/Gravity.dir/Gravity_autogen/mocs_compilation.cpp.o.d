@@ -423,4 +423,36 @@ CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaType \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/QForwardRenderer \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/qforwardrenderer.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtechniquefilter.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qframegraphnode.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DCore/qentity.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QRectF \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qcolor.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/QClearBuffers \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qclearbuffers.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qrendertargetoutput.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/QAbstractTexture \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qabstracttexture.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtextureimagedata.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopengltexture.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qopengl.h /usr/include/GL/gl.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglext.h \
+ /usr/include/inttypes.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QScopedPointer \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qscopedpointer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QImage \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QSharedPointer \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qsharedpointer.h \
+ /usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtexturewrapmode.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QFlags \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor

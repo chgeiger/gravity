@@ -14,15 +14,15 @@ SphereWidget::SphereWidget()
 {
     setTitle("Gravity Simulator - Qt3D");
     
-    // Create scene
-    Qt3DCore::QEntity *scene = createScene();
-    
-    // Setup camera
+    // Setup camera first
     auto *camera = this->camera();
     camera->setPosition(QVector3D(0, 0, 3.5f));
     camera->setViewCenter(QVector3D(0, 0, 0));
     camera->setUpVector(QVector3D(0, 1, 0));
     camera->lens()->setPerspectiveProjection(45.0f, 16.0f / 9.0f, 0.1f, 1000.0f);
+    
+    // Create scene
+    Qt3DCore::QEntity *scene = createScene();
     
     // Set root entity
     setRootEntity(scene);

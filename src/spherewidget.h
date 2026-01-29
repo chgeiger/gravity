@@ -3,6 +3,8 @@
 
 #include <Qt3DExtras/Qt3DWindow>
 #include <Qt3DCore/QEntity>
+#include <Qt3DExtras/QForwardRenderer>
+#include <QColor>
 
 QT_BEGIN_NAMESPACE
 namespace Qt3DCore {
@@ -23,6 +25,13 @@ class SphereWidget : public Qt3DExtras::Qt3DWindow {
 public:
     SphereWidget();
     ~SphereWidget() = default;
+    
+    inline void setBackgroundColor(const QColor &color) {
+        auto fg = defaultFrameGraph();
+        if (fg) {
+            fg->setClearColor(color);
+        }
+    }
 
 private slots:
     void updateFrame();
