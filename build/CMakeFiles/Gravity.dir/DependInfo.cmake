@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/chris/devel/gravity/build/Gravity_autogen/mocs_compilation.cpp" "CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o.d"
   "/home/chris/devel/gravity/src/main.cpp" "CMakeFiles/Gravity.dir/src/main.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/main.cpp.o.d"
   "/home/chris/devel/gravity/src/mainwindow.cpp" "CMakeFiles/Gravity.dir/src/mainwindow.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/mainwindow.cpp.o.d"
+  "/home/chris/devel/gravity/src/spherewidget.cpp" "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o.d"
   "" "Gravity" "gcc" "CMakeFiles/Gravity.dir/link.d"
   )
 
