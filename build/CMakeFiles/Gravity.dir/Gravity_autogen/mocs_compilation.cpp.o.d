@@ -420,4 +420,10 @@ CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QTimer \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtimer.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qbasictimer.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbasictimer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/QOpenGLShaderProgram \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopenglshaderprogram.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qmatrix4x4.h

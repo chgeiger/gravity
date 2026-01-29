@@ -6,6 +6,7 @@
 #include <QMatrix4x4>
 #include <QVector3D>
 #include <QTimer>
+#include <QOpenGLShaderProgram>
 
 class SphereWidget : public QOpenGLWidget, protected QOpenGLFunctions {
     Q_OBJECT
@@ -24,7 +25,7 @@ private slots:
 
 private:
     void createSphere();
-    void drawSphere();
+    void createShaderProgram();
 
     QMatrix4x4 projection;
     QMatrix4x4 view;
@@ -33,6 +34,7 @@ private:
     GLuint VAO, VBO, EBO;
     GLuint vertexCount;
     QTimer *timer;
+    QOpenGLShaderProgram *shaderProgram;
 };
 
 #endif // SPHEREWIDGET_H

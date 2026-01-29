@@ -432,10 +432,15 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector3d.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector4d.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/QOpenGLShaderProgram \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopenglshaderprogram.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/QOpenGLWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qopenglwidget.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets/qtopenglwidgetsexports.h \
