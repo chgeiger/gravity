@@ -1,0 +1,5 @@
+/home/chris/devel/gravity/build/CMakeFiles/Gravity.dir
+/home/chris/devel/gravity/build/CMakeFiles/edit_cache.dir
+/home/chris/devel/gravity/build/CMakeFiles/rebuild_cache.dir
+/home/chris/devel/gravity/build/CMakeFiles/Gravity_autogen_timestamp_deps.dir
+/home/chris/devel/gravity/build/CMakeFiles/Gravity_autogen.dir
