@@ -319,9 +319,46 @@ void SphereWidget::updateMarkers(float deltaSeconds)
         return;
     }
 
-    for (auto &state : markers) {
+    constexpr float sphereRadius = 1.0f;
+    constexpr float gravityConstant = 0.35f;
+    const float epsilon = 1e-4f;
+
+    QVector<QVector3D> accelerations(markers.size(), QVector3D(0.0f, 0.0f, 0.0f));
+
+    for (int i = 0; i < markers.size(); ++i) {
+        for (int j = i + 1; j < markers.size(); ++j) {
+            const QVector3D pa = markers[i].position.normalized();
+            const QVector3D pb = markers[j].position.normalized();
+
+            const float dot = qBound(-1.0f, QVector3D::dotProduct(pa, pb), 1.0f);
+            const float angle = qAcos(dot);
+            const float arc = qMax(angle * sphereRadius, epsilon);
+            const float otherArc = qMax(static_cast<float>(2.0 * M_PI) * sphereRadius - arc, epsilon);
+
+            QVector3D ti = pb - QVector3D::dotProduct(pb, pa) * pa;
+            QVector3D tj = pa - QVector3D::dotProduct(pa, pb) * pb;
+
+            if (ti.lengthSquared() < epsilon || tj.lengthSquared() < epsilon) {
+                continue;
+            }
+
+            ti.normalize();
+            tj.normalize();
+
+            const float mi = markers[i].radius * markers[i].radius;
+            const float mj = markers[j].radius * markers[j].radius;
+
+            const float forceMagnitude = gravityConstant * mi * mj * ((1.0f / (arc * arc)) - (1.0f / (otherArc * otherArc)));
+
+            accelerations[i] += (forceMagnitude / mi) * ti;
+            accelerations[j] += (forceMagnitude / mj) * tj;
+        }
+    }
+
+    for (int i = 0; i < markers.size(); ++i) {
+        auto &state = markers[i];
         const QVector3D position = state.position.normalized();
-        QVector3D velocity = state.velocity;
+        QVector3D velocity = state.velocity + accelerations.value(i) * deltaSeconds;
         velocity -= QVector3D::dotProduct(velocity, position) * position;
 
         const float speed = velocity.length();
