@@ -61,7 +61,6 @@ private:
     void clearMarkers();
 
     Qt3DCore::QTransform *sphereTransform;
-    float rotationAngle;
     Qt3DExtras::QOrbitCameraController *cameraController;
     Qt3DCore::QEntity *rootEntity;
     struct MarkerState {

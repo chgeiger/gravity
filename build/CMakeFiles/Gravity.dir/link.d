@@ -5,7 +5,9 @@ Gravity: \
   CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o \
   CMakeFiles/Gravity.dir/src/main.cpp.o \
   CMakeFiles/Gravity.dir/src/mainwindow.cpp.o \
+  CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o \
   CMakeFiles/Gravity.dir/src/spherewidget.cpp.o \
+  CMakeFiles/Gravity.dir/src/surface_marker.cpp.o \
   /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.2 \
   /usr/lib/x86_64-linux-gnu/libQt63DExtras.so.6.8.2 \
   /usr/lib/x86_64-linux-gnu/libQt63DRender.so.6.8.2 \
@@ -45,7 +47,6 @@ Gravity: \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o \
-  /lib/x86_64-linux-gnu/libm.so.6 \
   /usr/lib/x86_64-linux-gnu/libQt63DInput.so.6.8.2 \
   /usr/lib/x86_64-linux-gnu/libQt63DLogic.so.6.8.2 \
   /usr/lib/x86_64-linux-gnu/libQt6Concurrent.so.6.8.2 \
@@ -141,7 +142,11 @@ CMakeFiles/Gravity.dir/src/main.cpp.o:
 
 CMakeFiles/Gravity.dir/src/mainwindow.cpp.o:
 
+CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o:
+
 CMakeFiles/Gravity.dir/src/spherewidget.cpp.o:
+
+CMakeFiles/Gravity.dir/src/surface_marker.cpp.o:
 
 /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.2:
 
@@ -220,8 +225,6 @@ CMakeFiles/Gravity.dir/src/spherewidget.cpp.o:
 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o:
-
-/lib/x86_64-linux-gnu/libm.so.6:
 
 /usr/lib/x86_64-linux-gnu/libQt63DInput.so.6.8.2:
 

@@ -16,7 +16,6 @@
 
 SphereWidget::SphereWidget()
     : Qt3DExtras::Qt3DWindow(),
-      rotationAngle(0.0f),
       sphereTransform(nullptr),
       cameraController(nullptr),
     rootEntity(nullptr),
@@ -301,16 +300,6 @@ void SphereWidget::updateFrame()
     lastFrameMs = nowMs;
 
     updateMarkers(deltaSeconds);
-
-    if (sphereTransform) {
-        rotationAngle += 0.5f; // Rotate 0.5 degrees per frame
-        if (rotationAngle >= 360.0f) {
-            rotationAngle -= 360.0f;
-        }
-        
-        auto rotation = QQuaternion::fromAxisAndAngle(QVector3D(0, 1, 0), rotationAngle);
-        sphereTransform->setRotation(rotation);
-    }
 }
 
 void SphereWidget::updateMarkers(float deltaSeconds)

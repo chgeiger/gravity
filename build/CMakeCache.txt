@@ -416,9 +416,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/chris/devel/gravity/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=28
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=31
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=6
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -553,7 +553,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.28
+CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.31
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
@@ -936,7 +936,7 @@ QT_FEATURE_getauxval:INTERNAL=ON
 //Qt feature: getentropy (from target Qt6::Core)
 QT_FEATURE_getentropy:INTERNAL=ON
 //Qt feature: getifaddrs (from target Qt6::Network)
-QT_FEATURE_getifaddrs:INTERNAL=ON
+QT_FEATURE_getifaddrs:INTERNAL=OFF
 //Qt feature: gif (from target Qt6::Gui)
 QT_FEATURE_gif:INTERNAL=ON
 //Qt feature: glib (from target Qt6::Core)
@@ -1008,7 +1008,7 @@ QT_FEATURE_integrityhid:INTERNAL=OFF
 //Qt feature: intelcet (from target Qt6::Core)
 QT_FEATURE_intelcet:INTERNAL=ON
 //Qt feature: ipv6ifname (from target Qt6::Network)
-QT_FEATURE_ipv6ifname:INTERNAL=ON
+QT_FEATURE_ipv6ifname:INTERNAL=OFF
 //Qt feature: islamiccivilcalendar (from target Qt6::Core)
 QT_FEATURE_islamiccivilcalendar:INTERNAL=ON
 //Qt feature: itemmodel (from target Qt6::Core)
@@ -1127,14 +1127,14 @@ QT_FEATURE_opengles3:INTERNAL=OFF
 QT_FEATURE_opengles31:INTERNAL=OFF
 //Qt feature: opengles32 (from target Qt6::Gui)
 QT_FEATURE_opengles32:INTERNAL=OFF
-//Qt feature: openssl (from target Qt6::Network)
+//Qt feature: openssl (from target Qt6::Core)
 QT_FEATURE_openssl:INTERNAL=ON
 //Qt feature: openssl_hash (from target Qt6::Core)
 QT_FEATURE_openssl_hash:INTERNAL=OFF
-//Qt feature: openssl_linked (from target Qt6::Network)
+//Qt feature: openssl_linked (from target Qt6::Core)
 QT_FEATURE_openssl_linked:INTERNAL=OFF
-//Qt feature: opensslv11 (from target Qt6::Network)
-QT_FEATURE_opensslv11:INTERNAL=ON
+//Qt feature: opensslv11 (from target Qt6::Core)
+QT_FEATURE_opensslv11:INTERNAL=OFF
 //Qt feature: opensslv30 (from target Qt6::Core)
 QT_FEATURE_opensslv30:INTERNAL=ON
 //Qt feature: openvg (from target Qt6::Gui)
@@ -1232,7 +1232,7 @@ QT_FEATURE_rdseed:INTERNAL=ON
 //Qt feature: reduce_exports (from target Qt6::Core)
 QT_FEATURE_reduce_exports:INTERNAL=ON
 //Qt feature: reduce_relocations (from target Qt6::Core)
-QT_FEATURE_reduce_relocations:INTERNAL=ON
+QT_FEATURE_reduce_relocations:INTERNAL=OFF
 //Qt feature: regularexpression (from target Qt6::Core)
 QT_FEATURE_regularexpression:INTERNAL=ON
 //Qt feature: relocatable (from target Qt6::Core)
@@ -1374,7 +1374,7 @@ QT_FEATURE_system_proxies:INTERNAL=ON
 //Qt feature: system_textmarkdownreader (from target Qt6::Gui)
 QT_FEATURE_system_textmarkdownreader:INTERNAL=ON
 //Qt feature: system_xcb_xinput (from target Qt6::Gui)
-QT_FEATURE_system_xcb_xinput:INTERNAL=OFF
+QT_FEATURE_system_xcb_xinput:INTERNAL=ON
 //Qt feature: system_zlib (from target Qt6::Core)
 QT_FEATURE_system_zlib:INTERNAL=ON
 //Qt feature: systemsemaphore (from target Qt6::Core)
