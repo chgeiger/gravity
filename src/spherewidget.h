@@ -40,6 +40,15 @@ public:
     void clearMarkers();
     void zoomIn();
     void zoomOut();
+    
+    struct MarkerInfo {
+        int index;
+        float radius;
+        QColor color;
+        QVector3D position;
+        QVector3D velocity;
+    };
+    QVector<MarkerInfo> getMarkersInfo() const;
 
     QJsonObject exportScenario() const;
     bool applyScenario(const QJsonObject &scenario);

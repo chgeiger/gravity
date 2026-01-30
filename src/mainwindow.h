@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 class SphereWidget;
+class QTreeWidget;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -12,9 +13,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
 private:
+    void refreshMarkersTree();
+    
     SphereWidget *sphereWidget;
     QWidget *settingsPanel;
     class MarkerSettingsPanel *markerSettingsPanel;
+    QTreeWidget *markersTreeWidget;
 };
 
 #endif // MAINWINDOW_H

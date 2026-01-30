@@ -483,3 +483,19 @@ void SphereWidget::zoomOut()
     pos *= 1.1f;  // 10% weiter weg
     cam->setPosition(pos);
 }
+
+QVector<SphereWidget::MarkerInfo> SphereWidget::getMarkersInfo() const
+{
+    QVector<MarkerInfo> result;
+    for (int i = 0; i < markers.size(); ++i) {
+        const auto &state = markers[i];
+        result.append({
+            i,
+            state.radius,
+            state.color,
+            state.position,
+            state.velocity
+        });
+    }
+    return result;
+}
