@@ -49,16 +49,21 @@ MainWindow::MainWindow(QWidget *parent)
     markerForm->setFormAlignment(Qt::AlignTop);
 
     auto *countEdit = new QLineEdit(markerGroup);
+    countEdit->setText("8");
     countEdit->setPlaceholderText("z. B. 8");
 
     auto *speedMinEdit = new QLineEdit(markerGroup);
+    speedMinEdit->setText("0.2");
     speedMinEdit->setPlaceholderText("z. B. 0.2");
     auto *speedMaxEdit = new QLineEdit(markerGroup);
+    speedMaxEdit->setText("0.8");
     speedMaxEdit->setPlaceholderText("z. B. 0.8");
 
     auto *sizeMinEdit = new QLineEdit(markerGroup);
+    sizeMinEdit->setText("0.05");
     sizeMinEdit->setPlaceholderText("z. B. 0.05");
     auto *sizeMaxEdit = new QLineEdit(markerGroup);
+    sizeMaxEdit->setText("0.15");
     sizeMaxEdit->setPlaceholderText("z. B. 0.2");
 
     markerForm->addRow("Anzahl", countEdit);
