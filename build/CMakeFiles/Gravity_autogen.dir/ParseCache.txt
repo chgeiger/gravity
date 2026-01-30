@@ -419,6 +419,7 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QColor
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QImage
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QVector3D
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/QWindow
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qcolor.h
@@ -440,6 +441,7 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindow.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopengltexture.h

@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QVector>
 #include <QElapsedTimer>
+#include <QVector3D>
 
 #include "surface_marker.h"
 
@@ -53,10 +54,8 @@ private:
     Qt3DExtras::QOrbitCameraController *cameraController;
     struct MarkerState {
         SurfaceMarker *marker;
-        float latitudeDeg;
-        float longitudeDeg;
-        float velocityLatDegPerSec;
-        float velocityLonDegPerSec;
+        QVector3D position; // unit vector on sphere
+        QVector3D velocity; // tangent vector (units: sphere radii per second)
     };
     QVector<MarkerState> markers;
     QElapsedTimer frameTimer;

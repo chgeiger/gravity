@@ -410,4 +410,6 @@ CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QVector3D \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
  /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/../../../src/surface_marker.h

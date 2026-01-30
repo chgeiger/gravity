@@ -9,6 +9,7 @@
 #include <Qt3DExtras/QOrbitCameraController>
 #include <QTimer>
 #include <QDebug>
+#include <QtMath>
 
 SphereWidget::SphereWidget()
     : Qt3DExtras::Qt3DWindow(), rotationAngle(0.0f), sphereTransform(nullptr), cameraController(nullptr)
@@ -67,19 +68,44 @@ void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
     }
 
     constexpr float sphereRadius = 1.0f;
-    constexpr float markerRadius = 0.1f;
+    constexpr float markerRadius = 0.3f;
+
+    auto fromLatLon = [](float latDeg, float lonDeg) {
+        const float latRad = qDegreesToRadians(latDeg);
+        const float lonRad = qDegreesToRadians(lonDeg);
+        const float cosLat = qCos(latRad);
+        return QVector3D(
+            cosLat * qCos(lonRad),
+            qSin(latRad),
+            cosLat * qSin(lonRad)
+        ).normalized();
+    };
+
+    auto tangentDirection = [](const QVector3D &pos, const QVector3D &dir) {
+        QVector3D tangent = dir - QVector3D::dotProduct(dir, pos) * pos;
+        if (tangent.lengthSquared() < 1e-6f) {
+            tangent = QVector3D::crossProduct(pos, QVector3D(0.0f, 1.0f, 0.0f));
+            if (tangent.lengthSquared() < 1e-6f) {
+                tangent = QVector3D::crossProduct(pos, QVector3D(1.0f, 0.0f, 0.0f));
+            }
+        }
+        return tangent.normalized();
+    };
 
     auto *markerA = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(220, 60, 60));
+    const QVector3D posA = fromLatLon(25.0f, 10.0f);
     markerA->setSphericalPosition(25.0f, 10.0f);
-    markers.append({markerA, 25.0f, 10.0f, 4.0f, 12.0f});
+    markers.append({markerA, posA, tangentDirection(posA, QVector3D(1.0f, 0.2f, 0.5f)) * 0.6f});
 
     auto *markerB = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(60, 200, 120));
+    const QVector3D posB = fromLatLon(-10.0f, 120.0f);
     markerB->setSphericalPosition(-10.0f, 120.0f);
-    markers.append({markerB, -10.0f, 120.0f, -6.0f, 8.0f});
+    markers.append({markerB, posB, tangentDirection(posB, QVector3D(-0.2f, 1.0f, 0.3f)) * 0.5f});
 
     auto *markerC = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(80, 120, 220));
+    const QVector3D posC = fromLatLon(45.0f, -60.0f);
     markerC->setSphericalPosition(45.0f, -60.0f);
-    markers.append({markerC, 45.0f, -60.0f, 3.0f, -10.0f});
+    markers.append({markerC, posC, tangentDirection(posC, QVector3D(0.4f, 0.1f, -1.0f)) * 0.55f});
 }
 
 void SphereWidget::createLighting(Qt3DCore::QEntity *rootEntity)
@@ -166,23 +192,22 @@ void SphereWidget::updateMarkers(float deltaSeconds)
     }
 
     for (auto &state : markers) {
-        state.latitudeDeg += state.velocityLatDegPerSec * deltaSeconds;
-        state.longitudeDeg += state.velocityLonDegPerSec * deltaSeconds;
+        const QVector3D position = state.position.normalized();
+        QVector3D velocity = state.velocity;
+        velocity -= QVector3D::dotProduct(velocity, position) * position;
 
-        if (state.latitudeDeg > 90.0f) {
-            state.latitudeDeg = 180.0f - state.latitudeDeg;
-            state.longitudeDeg += 180.0f;
-        } else if (state.latitudeDeg < -90.0f) {
-            state.latitudeDeg = -180.0f - state.latitudeDeg;
-            state.longitudeDeg += 180.0f;
+        const float speed = velocity.length();
+        if (speed > 1e-6f) {
+            const QVector3D axis = QVector3D::crossProduct(position, velocity).normalized();
+            const float angleRad = (speed * deltaSeconds);
+            const QQuaternion rotation = QQuaternion::fromAxisAndAngle(axis, qRadiansToDegrees(angleRad));
+
+            state.position = rotation.rotatedVector(position).normalized();
+            state.velocity = rotation.rotatedVector(velocity);
         }
 
-        if (state.longitudeDeg > 180.0f) {
-            state.longitudeDeg -= 360.0f;
-        } else if (state.longitudeDeg < -180.0f) {
-            state.longitudeDeg += 360.0f;
-        }
-
-        state.marker->setSphericalPosition(state.latitudeDeg, state.longitudeDeg);
+        const float latDeg = qRadiansToDegrees(qAsin(state.position.y()));
+        const float lonDeg = qRadiansToDegrees(qAtan2(state.position.z(), state.position.x()));
+        state.marker->setSphericalPosition(latDeg, lonDeg);
     }
 }
