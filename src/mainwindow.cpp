@@ -104,6 +104,14 @@ MainWindow::MainWindow(QWidget *parent)
         sphereWidget->clearMarkers();
     });
 
+    connect(markerSettingsPanel, &MarkerSettingsPanel::zoomInRequested, this, [this]() {
+        sphereWidget->zoomIn();
+    });
+
+    connect(markerSettingsPanel, &MarkerSettingsPanel::zoomOutRequested, this, [this]() {
+        sphereWidget->zoomOut();
+    });
+
     layout->addWidget(container, 1);
     layout->addWidget(settingsPanel, 0);
 

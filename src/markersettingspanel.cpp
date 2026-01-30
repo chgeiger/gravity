@@ -79,6 +79,21 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     clearButton->setMinimumHeight(32);
     layout->addWidget(clearButton);
 
+    auto *zoomLayout = new QHBoxLayout();
+    zoomOutButton = new QPushButton("-", this);
+    zoomOutButton->setMinimumHeight(32);
+    zoomOutButton->setMaximumWidth(50);
+    zoomLayout->addWidget(zoomOutButton);
+
+    zoomLayout->addStretch(1);
+
+    zoomInButton = new QPushButton("+", this);
+    zoomInButton->setMinimumHeight(32);
+    zoomInButton->setMaximumWidth(50);
+    zoomLayout->addWidget(zoomInButton);
+
+    layout->addLayout(zoomLayout);
+
     layout->addStretch(1);
 
     connect(generateButton, &QPushButton::clicked, this, &MarkerSettingsPanel::emitGenerate);
@@ -89,6 +104,8 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     connect(saveButton, &QPushButton::clicked, this, &MarkerSettingsPanel::saveRequested);
     connect(loadButton, &QPushButton::clicked, this, &MarkerSettingsPanel::loadRequested);
     connect(clearButton, &QPushButton::clicked, this, &MarkerSettingsPanel::clearAllMarkersRequested);
+    connect(zoomInButton, &QPushButton::clicked, this, &MarkerSettingsPanel::zoomInRequested);
+    connect(zoomOutButton, &QPushButton::clicked, this, &MarkerSettingsPanel::zoomOutRequested);
 }
 
 void MarkerSettingsPanel::emitGenerate()

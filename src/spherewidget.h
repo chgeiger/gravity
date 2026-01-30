@@ -38,6 +38,8 @@ public:
     void setAnimationEnabled(bool enabled);
     bool isAnimationEnabled() const { return animationEnabled; }
     void clearMarkers();
+    void zoomIn();
+    void zoomOut();
 
     QJsonObject exportScenario() const;
     bool applyScenario(const QJsonObject &scenario);

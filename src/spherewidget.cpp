@@ -332,8 +332,8 @@ void SphereWidget::updateMarkers(float deltaSeconds)
             ti.normalize();
             tj.normalize();
 
-            const float mi = markers[i].radius * markers[i].radius;
-            const float mj = markers[j].radius * markers[j].radius;
+            const float mi = markers[i].radius * markers[i].radius * markers[i].radius;
+            const float mj = markers[j].radius * markers[j].radius * markers[j].radius;
 
             const float forceMagnitude = gravityConstant * mi * mj * ((1.0f / (arc * arc)) - (1.0f / (otherArc * otherArc)));
 
@@ -466,4 +466,20 @@ void SphereWidget::setAnimationEnabled(bool enabled)
             animationTimer->stop();
         }
     }
+}
+
+void SphereWidget::zoomIn()
+{
+    auto *cam = this->camera();
+    QVector3D pos = cam->position();
+    pos *= 0.9f;  // 10% näher
+    cam->setPosition(pos);
+}
+
+void SphereWidget::zoomOut()
+{
+    auto *cam = this->camera();
+    QVector3D pos = cam->position();
+    pos *= 1.1f;  // 10% weiter weg
+    cam->setPosition(pos);
 }

@@ -18,6 +18,8 @@ signals:
     void saveRequested();
     void loadRequested();
     void clearAllMarkersRequested();
+    void zoomInRequested();
+    void zoomOutRequested();
 
 private:
     void emitGenerate();
@@ -32,6 +34,8 @@ private:
     QPushButton *saveButton;
     QPushButton *loadButton;
     QPushButton *clearButton;
+    QPushButton *zoomInButton;
+    QPushButton *zoomOutButton;
 };
 
 #endif // MARKERSETTINGSPANEL_H
