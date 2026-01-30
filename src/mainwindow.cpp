@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QTabWidget>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -34,8 +35,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     settingsPanel = new QWidget(central);
     settingsPanel->setFixedWidth(280);
- //   settingsPanel->setStyleSheet("background-color: #1f1f1f; color: #e0e0e0;");
-
     auto *panelLayout = new QVBoxLayout(settingsPanel);
     panelLayout->setContentsMargins(16, 16, 16, 16);
     panelLayout->setSpacing(12);
@@ -43,8 +42,29 @@ MainWindow::MainWindow(QWidget *parent)
     title->setStyleSheet("font-weight: 600; font-size: 16px;");
     panelLayout->addWidget(title);
 
-    markerSettingsPanel = new MarkerSettingsPanel(settingsPanel);
-    panelLayout->addWidget(markerSettingsPanel);
+    auto *tabWidget = new QTabWidget(settingsPanel);
+    
+    // Tab 1: Marker
+    auto *markerTab = new QWidget();
+    auto *markerLayout = new QVBoxLayout(markerTab);
+    markerLayout->setContentsMargins(0, 0, 0, 0);
+    markerLayout->setSpacing(12);
+    
+    markerSettingsPanel = new MarkerSettingsPanel(markerTab);
+    markerLayout->addWidget(markerSettingsPanel);
+    markerLayout->addStretch(1);
+    tabWidget->addTab(markerTab, "Marker");
+    
+    // Tab 2: Objekte
+    auto *objectsTab = new QWidget();
+    auto *objectsLayout = new QVBoxLayout(objectsTab);
+    objectsLayout->setContentsMargins(12, 12, 12, 12);
+    auto *objectsLabel = new QLabel("Objekte", objectsTab);
+    objectsLayout->addWidget(objectsLabel);
+    objectsLayout->addStretch(1);
+    tabWidget->addTab(objectsTab, "Objekte");
+    
+    panelLayout->addWidget(tabWidget);
     panelLayout->addStretch(1);
 
     connect(markerSettingsPanel, &MarkerSettingsPanel::generateRequested, this,

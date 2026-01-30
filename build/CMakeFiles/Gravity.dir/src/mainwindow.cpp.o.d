@@ -519,4 +519,6 @@ CMakeFiles/Gravity.dir/src/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonDocument \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsondocument.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsondocument.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h
