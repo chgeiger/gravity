@@ -11,6 +11,9 @@ namespace Qt3DCore {
 namespace Qt3DRender {
     class QGeometryRenderer;
 }
+namespace Qt3DExtras {
+    class QPhongMaterial;
+}
 QT_END_NAMESPACE
 
 class SurfaceMarker {
@@ -22,6 +25,7 @@ public:
     ~SurfaceMarker() = default;
 
     void setSphericalPosition(float latitudeDeg, float longitudeDeg);
+    void setColor(const QColor &color);
 
     Qt3DCore::QEntity *entity() const { return markerEntity; }
 
@@ -36,6 +40,7 @@ private:
     Qt3DCore::QEntity *markerEntity;
     Qt3DCore::QTransform *transform;
     Qt3DRender::QGeometryRenderer *geometryRenderer;
+    Qt3DExtras::QPhongMaterial *material;
 };
 
 #endif // SURFACE_MARKER_H

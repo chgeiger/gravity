@@ -263,13 +263,13 @@ SurfaceMarker::SurfaceMarker(Qt3DCore::QEntity *parent,
       longitudeDeg(0.0f),
       markerEntity(new Qt3DCore::QEntity(parent)),
             transform(new Qt3DCore::QTransform()),
-            geometryRenderer(createSphericalCap(surfaceRadius, markerRadius))
+            geometryRenderer(createSphericalCap(surfaceRadius, markerRadius)),
+            material(new Qt3DExtras::QPhongMaterial())
 {
-    auto *material = new Qt3DExtras::QPhongMaterial();
-    material->setDiffuse(color);
-    material->setAmbient(color);
-    material->setSpecular(QColor(200, 200, 200));
-    material->setShininess(16.0f);
+        material->setDiffuse(color);
+        material->setAmbient(color);
+        material->setSpecular(QColor(200, 200, 200));
+        material->setShininess(16.0f);
 
     if (auto *effect = material->effect()) {
         const auto techniques = effect->techniques();
@@ -295,6 +295,15 @@ void SurfaceMarker::setSphericalPosition(float latitudeDeg, float longitudeDeg)
     this->latitudeDeg = latitudeDeg;
     this->longitudeDeg = longitudeDeg;
     updateTransform();
+}
+
+void SurfaceMarker::setColor(const QColor &color)
+{
+    if (!material) {
+        return;
+    }
+    material->setDiffuse(color);
+    material->setAmbient(color);
 }
 
 void SurfaceMarker::updateTransform()

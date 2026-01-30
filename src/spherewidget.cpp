@@ -136,6 +136,8 @@ void SphereWidget::generateMarkers(int count, float speedMin, float speedMax, fl
         return tangent.normalized();
     };
 
+    const QColor baseColor(120, 190, 255);
+
     for (int i = 0; i < count; ++i) {
         const QVector3D position = randomUnitVector();
         const float latDeg = qRadiansToDegrees(qAsin(position.y()));
@@ -144,14 +146,13 @@ void SphereWidget::generateMarkers(int count, float speedMin, float speedMax, fl
         const float markerRadius = static_cast<float>(randRange(sizeMin, sizeMax));
         const float speed = static_cast<float>(randRange(speedMin, speedMax));
 
-        const QColor color = QColor::fromHsv(rng->bounded(0, 360), 200, 230);
-        auto *marker = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, color);
+        auto *marker = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, baseColor);
         marker->setSphericalPosition(latDeg, lonDeg);
 
         const QVector3D dir = randomUnitVector();
         const QVector3D velocity = tangentDirection(position, dir) * speed;
 
-        markers.append({marker, position, velocity, markerRadius, color});
+        markers.append({marker, position, velocity, markerRadius, baseColor});
     }
 }
 
@@ -336,6 +337,34 @@ void SphereWidget::updateMarkers(float deltaSeconds)
         const float latDeg = qRadiansToDegrees(qAsin(state.position.y()));
         const float lonDeg = qRadiansToDegrees(qAtan2(state.position.z(), state.position.x()));
         state.marker->setSphericalPosition(latDeg, lonDeg);
+    }
+
+    const QColor baseColor(120, 190, 255);
+    const QColor hitColor(255, 220, 80);
+
+    QVector<bool> colliding(markers.size(), false);
+    constexpr float sphereRadius = 1.0f;
+
+    for (int i = 0; i < markers.size(); ++i) {
+        for (int j = i + 1; j < markers.size(); ++j) {
+            const QVector3D pa = markers[i].position.normalized();
+            const QVector3D pb = markers[j].position.normalized();
+            const float dot = qBound(-1.0f, QVector3D::dotProduct(pa, pb), 1.0f);
+            const float angle = qAcos(dot);
+            const float minAngle = (markers[i].radius + markers[j].radius) / sphereRadius;
+            if (angle <= minAngle) {
+                colliding[i] = true;
+                colliding[j] = true;
+            }
+        }
+    }
+
+    for (int i = 0; i < markers.size(); ++i) {
+        const QColor target = colliding[i] ? hitColor : baseColor;
+        if (markers[i].color != target) {
+            markers[i].color = target;
+            markers[i].marker->setColor(target);
+        }
     }
 }
 
