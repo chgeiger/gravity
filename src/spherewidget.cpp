@@ -20,7 +20,8 @@ SphereWidget::SphereWidget()
       cameraController(nullptr),
     rootEntity(nullptr),
     animationTimer(nullptr),
-    animationEnabled(true)
+    animationEnabled(true),
+    highlightedMarkerIndex(-1)
 {
     setTitle("Gravity Simulator - Qt3D");
 
@@ -373,6 +374,11 @@ void SphereWidget::updateMarkers(float deltaSeconds)
     }
 
     for (int i = 0; i < markers.size(); ++i) {
+        // Überspringe den hervorgehobenen Marker
+        if (i == highlightedMarkerIndex) {
+            continue;
+        }
+        
         const QColor target = colliding[i] ? hitColor : baseColor;
         if (markers[i].color != target) {
             markers[i].color = target;
@@ -498,4 +504,44 @@ QVector<SphereWidget::MarkerInfo> SphereWidget::getMarkersInfo() const
         });
     }
     return result;
+}
+
+void SphereWidget::highlightMarker(int markerIndex)
+{
+    qDebug() << "highlightMarker called with index:" << markerIndex << "total markers:" << markers.size();
+    
+    // Stelle die vorherige hervorgehobene Farbe wieder her
+    if (highlightedMarkerIndex >= 0 && highlightedMarkerIndex < markers.size()) {
+        qDebug() << "Restoring color for marker:" << highlightedMarkerIndex;
+        markers[highlightedMarkerIndex].color = highlightedMarkerOriginalColor;
+        if (markers[highlightedMarkerIndex].marker) {
+            markers[highlightedMarkerIndex].marker->setColor(highlightedMarkerOriginalColor);
+        }
+    }
+    
+    // Speichere die neue hervorgehobene Marker-Info
+    if (markerIndex >= 0 && markerIndex < markers.size()) {
+        qDebug() << "Highlighting marker:" << markerIndex;
+        highlightedMarkerIndex = markerIndex;
+        highlightedMarkerOriginalColor = markers[markerIndex].color;
+        qDebug() << "Original color:" << highlightedMarkerOriginalColor;
+        markers[markerIndex].color = QColor(255, 0, 0); // Rot
+        if (markers[markerIndex].marker) {
+            qDebug() << "Setting marker color to red";
+            markers[markerIndex].marker->setColor(QColor(255, 0, 0));
+        } else {
+            qDebug() << "Warning: marker pointer is null!";
+        }
+    }
+}
+
+void SphereWidget::clearHighlightedMarker()
+{
+    if (highlightedMarkerIndex >= 0 && highlightedMarkerIndex < markers.size()) {
+        markers[highlightedMarkerIndex].color = highlightedMarkerOriginalColor;
+        if (markers[highlightedMarkerIndex].marker) {
+            markers[highlightedMarkerIndex].marker->setColor(highlightedMarkerOriginalColor);
+        }
+        highlightedMarkerIndex = -1;
+    }
 }

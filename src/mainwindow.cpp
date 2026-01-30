@@ -138,6 +138,8 @@ MainWindow::MainWindow(QWidget *parent)
         sphereWidget->zoomOut();
     });
 
+    connect(markersTreeWidget, &QTreeWidget::itemClicked, this, &MainWindow::onMarkerSelectionChanged);
+
     layout->addWidget(container, 1);
     layout->addWidget(settingsPanel, 0);
 
@@ -180,5 +182,36 @@ void MainWindow::refreshMarkersTree()
         
         markersTreeWidget->addTopLevelItem(markerItem);
         markerItem->setExpanded(false);
+    }
+}
+
+void MainWindow::onMarkerSelectionChanged()
+{
+    qDebug() << "onMarkerSelectionChanged called";
+    
+    QTreeWidgetItem *selectedItem = markersTreeWidget->currentItem();
+    
+    if (!selectedItem) {
+        qDebug() << "No item selected";
+        sphereWidget->clearHighlightedMarker();
+        return;
+    }
+    
+    qDebug() << "Selected item:" << selectedItem->text(0);
+    
+    // Finde den Parent-Item (Top-Level Item)
+    QTreeWidgetItem *markerItem = selectedItem;
+    while (markerItem->parent() != nullptr) {
+        markerItem = markerItem->parent();
+    }
+    
+    qDebug() << "Marker item:" << markerItem->text(0);
+    
+    // Finde den Index des Markers
+    int markerIndex = markersTreeWidget->indexOfTopLevelItem(markerItem);
+    qDebug() << "Marker index:" << markerIndex;
+    
+    if (markerIndex >= 0) {
+        sphereWidget->highlightMarker(markerIndex);
     }
 }

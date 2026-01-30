@@ -14,6 +14,7 @@ public:
 
 private:
     void refreshMarkersTree();
+    void onMarkerSelectionChanged();
     
     SphereWidget *sphereWidget;
     QWidget *settingsPanel;

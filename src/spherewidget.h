@@ -40,6 +40,8 @@ public:
     void clearMarkers();
     void zoomIn();
     void zoomOut();
+    void highlightMarker(int markerIndex);
+    void clearHighlightedMarker();
     
     struct MarkerInfo {
         int index;
@@ -86,6 +88,8 @@ private:
     qint64 lastFrameMs;
     QTimer *animationTimer;
     bool animationEnabled;
+    int highlightedMarkerIndex;
+    QColor highlightedMarkerOriginalColor;
 };
 
 #endif // SPHEREWIDGET_H
