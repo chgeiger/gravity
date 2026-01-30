@@ -6,6 +6,10 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QWidget>
+#include <QFileDialog>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -52,6 +56,49 @@ MainWindow::MainWindow(QWidget *parent)
             [this](bool running) {
                 sphereWidget->setAnimationEnabled(running);
             });
+
+    connect(markerSettingsPanel, &MarkerSettingsPanel::saveRequested, this, [this]() {
+        QFileDialog dialog(this, "Szenario speichern");
+        dialog.setAcceptMode(QFileDialog::AcceptSave);
+        dialog.setNameFilter("Gravity Scenario (*.grv)");
+        dialog.setDefaultSuffix("grv");
+        if (!dialog.exec()) {
+            return;
+        }
+        const QString path = dialog.selectedFiles().value(0);
+        if (path.isEmpty()) {
+            return;
+        }
+
+        QFile file(path);
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            return;
+        }
+
+        const QJsonObject scenario = sphereWidget->exportScenario();
+        const QJsonDocument doc(scenario);
+        file.write(doc.toJson(QJsonDocument::Indented));
+    });
+
+    connect(markerSettingsPanel, &MarkerSettingsPanel::loadRequested, this, [this]() {
+        const QString path = QFileDialog::getOpenFileName(this, "Szenario laden", {}, "Gravity Scenario (*.grv)");
+        if (path.isEmpty()) {
+            return;
+        }
+
+        QFile file(path);
+        if (!file.open(QIODevice::ReadOnly)) {
+            return;
+        }
+
+        const QByteArray data = file.readAll();
+        const QJsonDocument doc = QJsonDocument::fromJson(data);
+        if (!doc.isObject()) {
+            return;
+        }
+
+        sphereWidget->applyScenario(doc.object());
+    });
 
     layout->addWidget(container, 1);
     layout->addWidget(settingsPanel, 0);

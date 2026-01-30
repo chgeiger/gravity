@@ -12,6 +12,7 @@
 #include <QtMath>
 #include <QRandomGenerator>
 #include <algorithm>
+#include <QJsonArray>
 
 SphereWidget::SphereWidget()
     : Qt3DExtras::Qt3DWindow(),
@@ -150,8 +151,88 @@ void SphereWidget::generateMarkers(int count, float speedMin, float speedMax, fl
         const QVector3D dir = randomUnitVector();
         const QVector3D velocity = tangentDirection(position, dir) * speed;
 
-        markers.append({marker, position, velocity});
+        markers.append({marker, position, velocity, markerRadius, color});
     }
+}
+
+QJsonObject SphereWidget::exportScenario() const
+{
+    QJsonObject root;
+    root["version"] = 1;
+    root["animationEnabled"] = animationEnabled;
+    root["sphereRadius"] = 1.0;
+
+    QJsonArray markerArray;
+
+    for (const auto &state : markers) {
+        QJsonObject markerObj;
+        markerObj["radius"] = state.radius;
+        markerObj["color"] = QJsonArray{state.color.red(), state.color.green(), state.color.blue()};
+        markerObj["position"] = QJsonArray{state.position.x(), state.position.y(), state.position.z()};
+        markerObj["velocity"] = QJsonArray{state.velocity.x(), state.velocity.y(), state.velocity.z()};
+        markerArray.append(markerObj);
+    }
+
+    root["markers"] = markerArray;
+    return root;
+}
+
+bool SphereWidget::applyScenario(const QJsonObject &scenario)
+{
+    if (!scenario.contains("markers") || !scenario["markers"].isArray()) {
+        return false;
+    }
+
+    const QJsonArray markerArray = scenario["markers"].toArray();
+    clearMarkers();
+
+    constexpr float sphereRadius = 1.0f;
+
+    for (const auto &entry : markerArray) {
+        if (!entry.isObject()) {
+            continue;
+        }
+
+        const QJsonObject markerObj = entry.toObject();
+        const QJsonArray colorArr = markerObj["color"].toArray();
+        const QJsonArray posArr = markerObj["position"].toArray();
+        const QJsonArray velArr = markerObj["velocity"].toArray();
+
+        if (colorArr.size() != 3 || posArr.size() != 3 || velArr.size() != 3) {
+            continue;
+        }
+
+        const float radius = static_cast<float>(markerObj["radius"].toDouble(0.1));
+        const QColor color(
+            colorArr[0].toInt(255),
+            colorArr[1].toInt(255),
+            colorArr[2].toInt(255)
+        );
+
+        const QVector3D position(
+            static_cast<float>(posArr[0].toDouble()),
+            static_cast<float>(posArr[1].toDouble()),
+            static_cast<float>(posArr[2].toDouble())
+        );
+
+        const QVector3D velocity(
+            static_cast<float>(velArr[0].toDouble()),
+            static_cast<float>(velArr[1].toDouble()),
+            static_cast<float>(velArr[2].toDouble())
+        );
+
+        auto *marker = new SurfaceMarker(rootEntity, sphereRadius, radius, color);
+        const QVector3D posNorm = position.normalized();
+        const float latDeg = qRadiansToDegrees(qAsin(posNorm.y()));
+        const float lonDeg = qRadiansToDegrees(qAtan2(posNorm.z(), posNorm.x()));
+        marker->setSphericalPosition(latDeg, lonDeg);
+
+        markers.append({marker, posNorm, velocity, radius, color});
+    }
+
+    const bool animEnabled = scenario["animationEnabled"].toBool(true);
+    setAnimationEnabled(animEnabled);
+    return true;
 }
 
 void SphereWidget::createLighting(Qt3DCore::QEntity *rootEntity)

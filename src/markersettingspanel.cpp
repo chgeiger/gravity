@@ -67,6 +67,14 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     toggleAnimationButton->setMinimumHeight(32);
     layout->addWidget(toggleAnimationButton);
 
+    saveButton = new QPushButton("Szenario speichern", this);
+    saveButton->setMinimumHeight(32);
+    layout->addWidget(saveButton);
+
+    loadButton = new QPushButton("Szenario laden", this);
+    loadButton->setMinimumHeight(32);
+    layout->addWidget(loadButton);
+
     layout->addStretch(1);
 
     connect(generateButton, &QPushButton::clicked, this, &MarkerSettingsPanel::emitGenerate);
@@ -74,6 +82,8 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
         toggleAnimationButton->setText(checked ? "Animation stoppen" : "Animation starten");
         emit animationToggled(checked);
     });
+    connect(saveButton, &QPushButton::clicked, this, &MarkerSettingsPanel::saveRequested);
+    connect(loadButton, &QPushButton::clicked, this, &MarkerSettingsPanel::loadRequested);
 }
 
 void MarkerSettingsPanel::emitGenerate()

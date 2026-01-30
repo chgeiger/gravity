@@ -8,6 +8,8 @@
 #include <QVector>
 #include <QElapsedTimer>
 #include <QVector3D>
+#include <QJsonObject>
+#include <QColor>
 
 #include "surface_marker.h"
 
@@ -35,6 +37,9 @@ public:
     void generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax);
     void setAnimationEnabled(bool enabled);
     bool isAnimationEnabled() const { return animationEnabled; }
+
+    QJsonObject exportScenario() const;
+    bool applyScenario(const QJsonObject &scenario);
     
     inline void setBackgroundColor(const QColor &color) {
         auto fg = defaultFrameGraph();
@@ -62,6 +67,8 @@ private:
         SurfaceMarker *marker;
         QVector3D position; // unit vector on sphere
         QVector3D velocity; // tangent vector (units: sphere radii per second)
+        float radius;
+        QColor color;
     };
     QVector<MarkerState> markers;
     QElapsedTimer frameTimer;
