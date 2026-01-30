@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Gravity.dir/src/mainwindow.cpp.o.d"
   "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o"
   "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o.d"
+  "CMakeFiles/Gravity.dir/src/surface_marker.cpp.o"
+  "CMakeFiles/Gravity.dir/src/surface_marker.cpp.o.d"
   "Gravity"
   "Gravity.pdb"
   "Gravity_autogen/mocs_compilation.cpp"

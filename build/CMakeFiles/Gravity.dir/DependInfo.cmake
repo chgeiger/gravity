@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/chris/devel/gravity/src/main.cpp" "CMakeFiles/Gravity.dir/src/main.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/main.cpp.o.d"
   "/home/chris/devel/gravity/src/mainwindow.cpp" "CMakeFiles/Gravity.dir/src/mainwindow.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/mainwindow.cpp.o.d"
   "/home/chris/devel/gravity/src/spherewidget.cpp" "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o.d"
+  "/home/chris/devel/gravity/src/surface_marker.cpp" "CMakeFiles/Gravity.dir/src/surface_marker.cpp.o" "gcc" "CMakeFiles/Gravity.dir/src/surface_marker.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

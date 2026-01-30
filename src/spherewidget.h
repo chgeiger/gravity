@@ -5,6 +5,9 @@
 #include <Qt3DCore/QEntity>
 #include <Qt3DExtras/QForwardRenderer>
 #include <QColor>
+#include <QVector>
+
+#include "surface_marker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Qt3DCore {
@@ -41,10 +44,12 @@ private:
     Qt3DCore::QEntity *createScene();
     void createSphere(Qt3DCore::QEntity *rootEntity);
     void createLighting(Qt3DCore::QEntity *rootEntity);
+    void createMarkers(Qt3DCore::QEntity *rootEntity);
 
     Qt3DCore::QTransform *sphereTransform;
     float rotationAngle;
     Qt3DExtras::QOrbitCameraController *cameraController;
+    QVector<class SurfaceMarker *> markers;
 };
 
 #endif // SPHEREWIDGET_H

@@ -50,9 +50,33 @@ Qt3DCore::QEntity *SphereWidget::createScene()
     // Create lighting and sphere
     createLighting(rootEntity);
     createSphere(rootEntity);
+    createMarkers(rootEntity);
     
     qDebug() << "Scene created successfully";
     return rootEntity;
+}
+
+void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
+{
+    if (!rootEntity) {
+        qWarning() << "rootEntity is null in createMarkers!";
+        return;
+    }
+
+    constexpr float sphereRadius = 1.0f;
+    constexpr float markerRadius = 0.08f;
+
+    auto *markerA = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(220, 60, 60));
+    markerA->setSphericalPosition(25.0f, 10.0f);
+    markers.append(markerA);
+
+    auto *markerB = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(60, 200, 120));
+    markerB->setSphericalPosition(-10.0f, 120.0f);
+    markers.append(markerB);
+
+    auto *markerC = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(80, 120, 220));
+    markerC->setSphericalPosition(45.0f, -60.0f);
+    markers.append(markerC);
 }
 
 void SphereWidget::createLighting(Qt3DCore::QEntity *rootEntity)

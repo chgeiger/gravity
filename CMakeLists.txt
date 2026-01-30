@@ -14,6 +14,8 @@ add_executable(${PROJECT_NAME}
     src/mainwindow.cpp
     src/spherewidget.h
     src/spherewidget.cpp
+    src/surface_marker.h
+    src/surface_marker.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
