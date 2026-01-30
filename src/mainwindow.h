@@ -13,6 +13,7 @@ public:
 
 private:
     SphereWidget *sphereWidget;
+    QWidget *settingsPanel;
 };
 
 #endif // MAINWINDOW_H
