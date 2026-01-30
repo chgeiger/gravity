@@ -57,6 +57,7 @@ private:
     void createLighting(Qt3DCore::QEntity *rootEntity);
     void createMarkers(Qt3DCore::QEntity *rootEntity);
     void updateMarkers(float deltaSeconds);
+    void handleCollisions(QVector<bool> &colliding);
     void clearMarkers();
 
     Qt3DCore::QTransform *sphereTransform;

@@ -334,29 +334,18 @@ void SphereWidget::updateMarkers(float deltaSeconds)
             state.velocity = rotation.rotatedVector(velocity);
         }
 
-        const float latDeg = qRadiansToDegrees(qAsin(state.position.y()));
-        const float lonDeg = qRadiansToDegrees(qAtan2(state.position.z(), state.position.x()));
-        state.marker->setSphericalPosition(latDeg, lonDeg);
     }
 
     const QColor baseColor(120, 190, 255);
     const QColor hitColor(255, 220, 80);
 
     QVector<bool> colliding(markers.size(), false);
-    constexpr float sphereRadius = 1.0f;
+    handleCollisions(colliding);
 
-    for (int i = 0; i < markers.size(); ++i) {
-        for (int j = i + 1; j < markers.size(); ++j) {
-            const QVector3D pa = markers[i].position.normalized();
-            const QVector3D pb = markers[j].position.normalized();
-            const float dot = qBound(-1.0f, QVector3D::dotProduct(pa, pb), 1.0f);
-            const float angle = qAcos(dot);
-            const float minAngle = (markers[i].radius + markers[j].radius) / sphereRadius;
-            if (angle <= minAngle) {
-                colliding[i] = true;
-                colliding[j] = true;
-            }
-        }
+    for (auto &state : markers) {
+        const float latDeg = qRadiansToDegrees(qAsin(state.position.y()));
+        const float lonDeg = qRadiansToDegrees(qAtan2(state.position.z(), state.position.x()));
+        state.marker->setSphericalPosition(latDeg, lonDeg);
     }
 
     for (int i = 0; i < markers.size(); ++i) {
@@ -364,6 +353,76 @@ void SphereWidget::updateMarkers(float deltaSeconds)
         if (markers[i].color != target) {
             markers[i].color = target;
             markers[i].marker->setColor(target);
+        }
+    }
+}
+
+void SphereWidget::handleCollisions(QVector<bool> &colliding)
+{
+    if (markers.size() < 2) {
+        return;
+    }
+
+    constexpr float sphereRadius = 1.0f;
+    const float epsilon = 1e-6f;
+
+    for (int i = 0; i < markers.size(); ++i) {
+        for (int j = i + 1; j < markers.size(); ++j) {
+            auto &a = markers[i];
+            auto &b = markers[j];
+
+            const QVector3D pa = a.position.normalized();
+            const QVector3D pb = b.position.normalized();
+
+            const float dot = qBound(-1.0f, QVector3D::dotProduct(pa, pb), 1.0f);
+            const float angle = qAcos(dot);
+            const float minAngle = (a.radius + b.radius) / sphereRadius;
+
+            if (angle > minAngle) {
+                continue;
+            }
+
+            colliding[i] = true;
+            colliding[j] = true;
+
+            QVector3D mid = pa + pb;
+            if (mid.lengthSquared() < epsilon) {
+                mid = pa;
+            }
+            mid.normalize();
+
+            QVector3D n = pb - pa;
+            n -= QVector3D::dotProduct(n, mid) * mid;
+            if (n.lengthSquared() < epsilon) {
+                continue;
+            }
+            n.normalize();
+
+            QVector3D va = a.velocity - QVector3D::dotProduct(a.velocity, mid) * mid;
+            QVector3D vb = b.velocity - QVector3D::dotProduct(b.velocity, mid) * mid;
+
+            const float vaN = QVector3D::dotProduct(va, n);
+            const float vbN = QVector3D::dotProduct(vb, n);
+            const float rel = vaN - vbN;
+
+            if (rel <= 0.0f) {
+                continue;
+            }
+
+            const QVector3D vaT = va - vaN * n;
+            const QVector3D vbT = vb - vbN * n;
+
+            const float m1 = a.radius * a.radius;
+            const float m2 = b.radius * b.radius;
+
+            const float newVaN = (vaN * (m1 - m2) + 2.0f * m2 * vbN) / (m1 + m2);
+            const float newVbN = (vbN * (m2 - m1) + 2.0f * m1 * vaN) / (m1 + m2);
+
+            a.velocity = vaT + newVaN * n;
+            b.velocity = vbT + newVbN * n;
+
+            a.velocity -= QVector3D::dotProduct(a.velocity, pa) * pa;
+            b.velocity -= QVector3D::dotProduct(b.velocity, pb) * pb;
         }
     }
 }
