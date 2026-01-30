@@ -97,8 +97,6 @@ void SphereWidget::generateMarkers(int count, float speedMin, float speedMax, fl
         return;
     }
 
-    clearMarkers();
-
     if (count <= 0) {
         return;
     }

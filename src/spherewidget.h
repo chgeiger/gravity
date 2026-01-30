@@ -37,6 +37,7 @@ public:
     void generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax);
     void setAnimationEnabled(bool enabled);
     bool isAnimationEnabled() const { return animationEnabled; }
+    void clearMarkers();
 
     QJsonObject exportScenario() const;
     bool applyScenario(const QJsonObject &scenario);
@@ -58,7 +59,6 @@ private:
     void createMarkers(Qt3DCore::QEntity *rootEntity);
     void updateMarkers(float deltaSeconds);
     void handleCollisions(QVector<bool> &colliding);
-    void clearMarkers();
 
     Qt3DCore::QTransform *sphereTransform;
     Qt3DExtras::QOrbitCameraController *cameraController;

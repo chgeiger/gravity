@@ -100,6 +100,10 @@ MainWindow::MainWindow(QWidget *parent)
         sphereWidget->applyScenario(doc.object());
     });
 
+    connect(markerSettingsPanel, &MarkerSettingsPanel::clearAllMarkersRequested, this, [this]() {
+        sphereWidget->clearMarkers();
+    });
+
     layout->addWidget(container, 1);
     layout->addWidget(settingsPanel, 0);
 

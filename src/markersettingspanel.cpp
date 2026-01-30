@@ -75,6 +75,10 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     loadButton->setMinimumHeight(32);
     layout->addWidget(loadButton);
 
+    clearButton = new QPushButton("Alle Marker löschen", this);
+    clearButton->setMinimumHeight(32);
+    layout->addWidget(clearButton);
+
     layout->addStretch(1);
 
     connect(generateButton, &QPushButton::clicked, this, &MarkerSettingsPanel::emitGenerate);
@@ -84,6 +88,7 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     });
     connect(saveButton, &QPushButton::clicked, this, &MarkerSettingsPanel::saveRequested);
     connect(loadButton, &QPushButton::clicked, this, &MarkerSettingsPanel::loadRequested);
+    connect(clearButton, &QPushButton::clicked, this, &MarkerSettingsPanel::clearAllMarkersRequested);
 }
 
 void MarkerSettingsPanel::emitGenerate()

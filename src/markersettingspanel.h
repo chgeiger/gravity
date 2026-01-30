@@ -17,6 +17,7 @@ signals:
     void animationToggled(bool running);
     void saveRequested();
     void loadRequested();
+    void clearAllMarkersRequested();
 
 private:
     void emitGenerate();
@@ -30,6 +31,7 @@ private:
     QPushButton *toggleAnimationButton;
     QPushButton *saveButton;
     QPushButton *loadButton;
+    QPushButton *clearButton;
 };
 
 #endif // MARKERSETTINGSPANEL_H
