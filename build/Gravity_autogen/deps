@@ -319,6 +319,7 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtextureimagedata.h \
 	/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtexturewrapmode.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QFlags \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions \
@@ -356,6 +357,7 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \

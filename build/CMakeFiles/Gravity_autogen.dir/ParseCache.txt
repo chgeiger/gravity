@@ -317,6 +317,7 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtextureimagedata.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/Qt3DRender/qtexturewrapmode.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QFlags
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QHashFunctions
@@ -354,6 +355,7 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h
+ mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h

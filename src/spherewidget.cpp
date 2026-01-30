@@ -14,6 +14,9 @@ SphereWidget::SphereWidget()
     : Qt3DExtras::Qt3DWindow(), rotationAngle(0.0f), sphereTransform(nullptr), cameraController(nullptr)
 {
     setTitle("Gravity Simulator - Qt3D");
+
+    frameTimer.start();
+    lastFrameMs = frameTimer.elapsed();
     
     // Setup camera first
     auto *camera = this->camera();
@@ -68,15 +71,15 @@ void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
 
     auto *markerA = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(220, 60, 60));
     markerA->setSphericalPosition(25.0f, 10.0f);
-    markers.append(markerA);
+    markers.append({markerA, 25.0f, 10.0f, 4.0f, 12.0f});
 
     auto *markerB = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(60, 200, 120));
     markerB->setSphericalPosition(-10.0f, 120.0f);
-    markers.append(markerB);
+    markers.append({markerB, -10.0f, 120.0f, -6.0f, 8.0f});
 
     auto *markerC = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(80, 120, 220));
     markerC->setSphericalPosition(45.0f, -60.0f);
-    markers.append(markerC);
+    markers.append({markerC, 45.0f, -60.0f, 3.0f, -10.0f});
 }
 
 void SphereWidget::createLighting(Qt3DCore::QEntity *rootEntity)
@@ -139,6 +142,12 @@ void SphereWidget::createSphere(Qt3DCore::QEntity *rootEntity)
 
 void SphereWidget::updateFrame()
 {
+    const qint64 nowMs = frameTimer.elapsed();
+    const float deltaSeconds = qMax(0.0f, (nowMs - lastFrameMs) / 1000.0f);
+    lastFrameMs = nowMs;
+
+    updateMarkers(deltaSeconds);
+
     if (sphereTransform) {
         rotationAngle += 0.5f; // Rotate 0.5 degrees per frame
         if (rotationAngle >= 360.0f) {
@@ -147,5 +156,33 @@ void SphereWidget::updateFrame()
         
         auto rotation = QQuaternion::fromAxisAndAngle(QVector3D(0, 1, 0), rotationAngle);
         sphereTransform->setRotation(rotation);
+    }
+}
+
+void SphereWidget::updateMarkers(float deltaSeconds)
+{
+    if (deltaSeconds <= 0.0f) {
+        return;
+    }
+
+    for (auto &state : markers) {
+        state.latitudeDeg += state.velocityLatDegPerSec * deltaSeconds;
+        state.longitudeDeg += state.velocityLonDegPerSec * deltaSeconds;
+
+        if (state.latitudeDeg > 90.0f) {
+            state.latitudeDeg = 180.0f - state.latitudeDeg;
+            state.longitudeDeg += 180.0f;
+        } else if (state.latitudeDeg < -90.0f) {
+            state.latitudeDeg = -180.0f - state.latitudeDeg;
+            state.longitudeDeg += 180.0f;
+        }
+
+        if (state.longitudeDeg > 180.0f) {
+            state.longitudeDeg -= 360.0f;
+        } else if (state.longitudeDeg < -180.0f) {
+            state.longitudeDeg += 360.0f;
+        }
+
+        state.marker->setSphericalPosition(state.latitudeDeg, state.longitudeDeg);
     }
 }

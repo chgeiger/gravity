@@ -6,6 +6,7 @@
 #include <Qt3DExtras/QForwardRenderer>
 #include <QColor>
 #include <QVector>
+#include <QElapsedTimer>
 
 #include "surface_marker.h"
 
@@ -45,11 +46,21 @@ private:
     void createSphere(Qt3DCore::QEntity *rootEntity);
     void createLighting(Qt3DCore::QEntity *rootEntity);
     void createMarkers(Qt3DCore::QEntity *rootEntity);
+    void updateMarkers(float deltaSeconds);
 
     Qt3DCore::QTransform *sphereTransform;
     float rotationAngle;
     Qt3DExtras::QOrbitCameraController *cameraController;
-    QVector<class SurfaceMarker *> markers;
+    struct MarkerState {
+        SurfaceMarker *marker;
+        float latitudeDeg;
+        float longitudeDeg;
+        float velocityLatDegPerSec;
+        float velocityLonDegPerSec;
+    };
+    QVector<MarkerState> markers;
+    QElapsedTimer frameTimer;
+    qint64 lastFrameMs;
 };
 
 #endif // SPHEREWIDGET_H
