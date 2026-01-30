@@ -13,6 +13,7 @@ namespace Qt3DCore {
 namespace Qt3DExtras {
     class QSphereMesh;
     class QPhongMaterial;
+    class QOrbitCameraController;
 }
 namespace Qt3DRender {
     class QPointLight;
@@ -43,6 +44,7 @@ private:
 
     Qt3DCore::QTransform *sphereTransform;
     float rotationAngle;
+    Qt3DExtras::QOrbitCameraController *cameraController;
 };
 
 #endif // SPHEREWIDGET_H

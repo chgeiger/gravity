@@ -6,11 +6,12 @@
 #include <Qt3DRender/QPointLight>
 #include <Qt3DExtras/QSphereMesh>
 #include <Qt3DExtras/QPhongMaterial>
+#include <Qt3DExtras/QOrbitCameraController>
 #include <QTimer>
 #include <QDebug>
 
 SphereWidget::SphereWidget()
-    : Qt3DExtras::Qt3DWindow(), rotationAngle(0.0f), sphereTransform(nullptr)
+    : Qt3DExtras::Qt3DWindow(), rotationAngle(0.0f), sphereTransform(nullptr), cameraController(nullptr)
 {
     setTitle("Gravity Simulator - Qt3D");
     
@@ -26,6 +27,12 @@ SphereWidget::SphereWidget()
     
     // Set root entity
     setRootEntity(scene);
+
+    // Mouse navigation: orbit camera controller
+    cameraController = new Qt3DExtras::QOrbitCameraController(scene);
+    cameraController->setLinearSpeed(50.0f);
+    cameraController->setLookSpeed(180.0f);
+    cameraController->setCamera(camera);
     
     // Setup animation timer
     QTimer *timer = new QTimer(this);
