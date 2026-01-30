@@ -5,6 +5,11 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QWidget>
+#include <QFormLayout>
+#include <QGroupBox>
+#include <QLineEdit>
+#include <QSpinBox>
+#include <QPushButton>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -34,7 +39,39 @@ MainWindow::MainWindow(QWidget *parent)
     auto *panelLayout = new QVBoxLayout(settingsPanel);
     panelLayout->setContentsMargins(16, 16, 16, 16);
     panelLayout->setSpacing(12);
-    panelLayout->addWidget(new QLabel("Einstellungen", settingsPanel));
+    auto *title = new QLabel("Einstellungen", settingsPanel);
+    title->setStyleSheet("font-weight: 600; font-size: 16px;");
+    panelLayout->addWidget(title);
+
+    auto *markerGroup = new QGroupBox("Marker erzeugen", settingsPanel);
+    auto *markerForm = new QFormLayout(markerGroup);
+    markerForm->setLabelAlignment(Qt::AlignLeft);
+    markerForm->setFormAlignment(Qt::AlignTop);
+
+    auto *countEdit = new QLineEdit(markerGroup);
+    countEdit->setPlaceholderText("z. B. 8");
+
+    auto *speedMinEdit = new QLineEdit(markerGroup);
+    speedMinEdit->setPlaceholderText("z. B. 0.2");
+    auto *speedMaxEdit = new QLineEdit(markerGroup);
+    speedMaxEdit->setPlaceholderText("z. B. 0.8");
+
+    auto *sizeMinEdit = new QLineEdit(markerGroup);
+    sizeMinEdit->setPlaceholderText("z. B. 0.05");
+    auto *sizeMaxEdit = new QLineEdit(markerGroup);
+    sizeMaxEdit->setPlaceholderText("z. B. 0.2");
+
+    markerForm->addRow("Anzahl", countEdit);
+    markerForm->addRow("Geschwindigkeit min", speedMinEdit);
+    markerForm->addRow("Geschwindigkeit max", speedMaxEdit);
+    markerForm->addRow("Größe min", sizeMinEdit);
+    markerForm->addRow("Größe max", sizeMaxEdit);
+
+    panelLayout->addWidget(markerGroup);
+
+    auto *generateButton = new QPushButton("Marker erzeugen", settingsPanel);
+    generateButton->setMinimumHeight(32);
+    panelLayout->addWidget(generateButton);
     panelLayout->addStretch(1);
 
     layout->addWidget(container, 1);
