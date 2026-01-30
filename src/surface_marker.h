@@ -8,6 +8,9 @@ QT_BEGIN_NAMESPACE
 namespace Qt3DCore {
     class QTransform;
 }
+namespace Qt3DRender {
+    class QGeometryRenderer;
+}
 QT_END_NAMESPACE
 
 class SurfaceMarker {
@@ -32,6 +35,7 @@ private:
 
     Qt3DCore::QEntity *markerEntity;
     Qt3DCore::QTransform *transform;
+    Qt3DRender::QGeometryRenderer *geometryRenderer;
 };
 
 #endif // SURFACE_MARKER_H

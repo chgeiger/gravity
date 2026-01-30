@@ -64,7 +64,7 @@ void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
     }
 
     constexpr float sphereRadius = 1.0f;
-    constexpr float markerRadius = 0.08f;
+    constexpr float markerRadius = 0.1f;
 
     auto *markerA = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(220, 60, 60));
     markerA->setSphericalPosition(25.0f, 10.0f);
