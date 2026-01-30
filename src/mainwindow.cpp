@@ -48,6 +48,11 @@ MainWindow::MainWindow(QWidget *parent)
                 sphereWidget->generateMarkers(count, speedMin, speedMax, sizeMin, sizeMax);
             });
 
+    connect(markerSettingsPanel, &MarkerSettingsPanel::animationToggled, this,
+            [this](bool running) {
+                sphereWidget->setAnimationEnabled(running);
+            });
+
     layout->addWidget(container, 1);
     layout->addWidget(settingsPanel, 0);
 

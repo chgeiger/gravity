@@ -14,6 +14,7 @@ public:
 
 signals:
     void generateRequested(int count, float speedMin, float speedMax, float sizeMin, float sizeMax);
+    void animationToggled(bool running);
 
 private:
     void emitGenerate();
@@ -24,6 +25,7 @@ private:
     QLineEdit *sizeMinEdit;
     QLineEdit *sizeMaxEdit;
     QPushButton *generateButton;
+    QPushButton *toggleAnimationButton;
 };
 
 #endif // MARKERSETTINGSPANEL_H

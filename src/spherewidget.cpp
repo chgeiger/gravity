@@ -18,7 +18,9 @@ SphereWidget::SphereWidget()
       rotationAngle(0.0f),
       sphereTransform(nullptr),
       cameraController(nullptr),
-      rootEntity(nullptr)
+    rootEntity(nullptr),
+    animationTimer(nullptr),
+    animationEnabled(true)
 {
     setTitle("Gravity Simulator - Qt3D");
 
@@ -45,9 +47,9 @@ SphereWidget::SphereWidget()
     cameraController->setCamera(camera);
     
     // Setup animation timer
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &SphereWidget::updateFrame);
-    timer->start(16); // ~60 FPS
+    animationTimer = new QTimer(this);
+    connect(animationTimer, &QTimer::timeout, this, &SphereWidget::updateFrame);
+    animationTimer->start(16); // ~60 FPS
 }
 
 Qt3DCore::QEntity *SphereWidget::createScene()
@@ -253,5 +255,22 @@ void SphereWidget::updateMarkers(float deltaSeconds)
         const float latDeg = qRadiansToDegrees(qAsin(state.position.y()));
         const float lonDeg = qRadiansToDegrees(qAtan2(state.position.z(), state.position.x()));
         state.marker->setSphericalPosition(latDeg, lonDeg);
+    }
+}
+
+void SphereWidget::setAnimationEnabled(bool enabled)
+{
+    if (animationEnabled == enabled) {
+        return;
+    }
+
+    animationEnabled = enabled;
+    if (animationTimer) {
+        if (animationEnabled) {
+            lastFrameMs = frameTimer.elapsed();
+            animationTimer->start(16);
+        } else {
+            animationTimer->stop();
+        }
     }
 }

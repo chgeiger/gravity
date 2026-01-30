@@ -33,6 +33,8 @@ public:
     ~SphereWidget() = default;
 
     void generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax);
+    void setAnimationEnabled(bool enabled);
+    bool isAnimationEnabled() const { return animationEnabled; }
     
     inline void setBackgroundColor(const QColor &color) {
         auto fg = defaultFrameGraph();
@@ -64,6 +66,8 @@ private:
     QVector<MarkerState> markers;
     QElapsedTimer frameTimer;
     qint64 lastFrameMs;
+    QTimer *animationTimer;
+    bool animationEnabled;
 };
 
 #endif // SPHEREWIDGET_H

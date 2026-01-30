@@ -61,9 +61,19 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     generateButton->setMinimumHeight(32);
     layout->addWidget(generateButton);
 
+    toggleAnimationButton = new QPushButton("Animation stoppen", this);
+    toggleAnimationButton->setCheckable(true);
+    toggleAnimationButton->setChecked(true);
+    toggleAnimationButton->setMinimumHeight(32);
+    layout->addWidget(toggleAnimationButton);
+
     layout->addStretch(1);
 
     connect(generateButton, &QPushButton::clicked, this, &MarkerSettingsPanel::emitGenerate);
+    connect(toggleAnimationButton, &QPushButton::toggled, this, [this](bool checked) {
+        toggleAnimationButton->setText(checked ? "Animation stoppen" : "Animation starten");
+        emit animationToggled(checked);
+    });
 }
 
 void MarkerSettingsPanel::emitGenerate()
