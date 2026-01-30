@@ -28,7 +28,7 @@ CMAKE_BUILD_TYPE:STRING=
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -54,7 +54,7 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+CMAKE_C_COMPILER:STRING=/usr/bin/cc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -273,7 +273,7 @@ Gravity_IS_TOP_LEVEL:STATIC=ON
 Gravity_SOURCE_DIR:STATIC=/home/chris/devel/gravity
 
 //Path to a file.
-OPENGL_EGL_INCLUDE_DIR:PATH=OPENGL_EGL_INCLUDE_DIR-NOTFOUND
+OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a file.
 OPENGL_GLES2_INCLUDE_DIR:PATH=OPENGL_GLES2_INCLUDE_DIR-NOTFOUND
@@ -291,7 +291,7 @@ OPENGL_GLX_INCLUDE_DIR:PATH=/usr/include
 OPENGL_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
-OPENGL_egl_LIBRARY:FILEPATH=OPENGL_egl_LIBRARY-NOTFOUND
+OPENGL_egl_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libEGL.so
 
 //Path to a library.
 OPENGL_gles2_LIBRARY:FILEPATH=OPENGL_gles2_LIBRARY-NOTFOUND
@@ -300,7 +300,7 @@ OPENGL_gles2_LIBRARY:FILEPATH=OPENGL_gles2_LIBRARY-NOTFOUND
 OPENGL_gles3_LIBRARY:FILEPATH=OPENGL_gles3_LIBRARY-NOTFOUND
 
 //Path to a library.
-OPENGL_glu_LIBRARY:FILEPATH=OPENGL_glu_LIBRARY-NOTFOUND
+OPENGL_glu_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLU.so
 
 //Path to a library.
 OPENGL_glx_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLX.so
@@ -315,7 +315,7 @@ OPENGL_xmesa_INCLUDE_DIR:PATH=OPENGL_xmesa_INCLUDE_DIR-NOTFOUND
 PKG_CONFIG_ARGN:STRING=
 
 //pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
 //Additional directories where find(Qt6 ...) host Qt components
 // are searched
@@ -394,10 +394,13 @@ Vulkan_INCLUDE_DIR:PATH=/usr/include
 Vulkan_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libvulkan.so
 
 //Path to a file.
-XKB_INCLUDE_DIR:PATH=XKB_INCLUDE_DIR-NOTFOUND
+XKB_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
-XKB_LIBRARY:FILEPATH=XKB_LIBRARY-NOTFOUND
+XKB_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libxkbcommon.so
+
+//Path to a library.
+pkgcfg_lib_PKG_XKB_xkbcommon:FILEPATH=/usr/lib/x86_64-linux-gnu/libxkbcommon.so
 
 
 ########################
@@ -413,9 +416,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/chris/devel/gravity/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=31
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=28
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=6
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -550,7 +553,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.31
+CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.28
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
@@ -593,6 +596,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_WrapAtomic:INTERNAL=[1][v()]
 FIND_PACKAGE_MESSAGE_DETAILS_WrapOpenGL:INTERNAL=[ON][v()]
 //Details about finding WrapVulkanHeaders
 FIND_PACKAGE_MESSAGE_DETAILS_WrapVulkanHeaders:INTERNAL=[/usr/include][v()]
+//Details about finding XKB
+FIND_PACKAGE_MESSAGE_DETAILS_XKB:INTERNAL=[/usr/lib/x86_64-linux-gnu/libxkbcommon.so][/usr/include][v1.6.0(0.5.0)]
 //Test HAVE_STDATOMIC
 HAVE_STDATOMIC:INTERNAL=1
 //ADVANCED property for variable: OPENGL_EGL_INCLUDE_DIR
@@ -625,27 +630,41 @@ OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-PKG_XKB_CFLAGS:INTERNAL=
+PKG_XKB_CFLAGS:INTERNAL=-I/usr/include
 PKG_XKB_CFLAGS_I:INTERNAL=
 PKG_XKB_CFLAGS_OTHER:INTERNAL=
-PKG_XKB_FOUND:INTERNAL=
-PKG_XKB_INCLUDEDIR:INTERNAL=
-PKG_XKB_LIBDIR:INTERNAL=
+PKG_XKB_FOUND:INTERNAL=1
+PKG_XKB_INCLUDEDIR:INTERNAL=/usr/include
+PKG_XKB_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_XKB_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lxkbcommon
+PKG_XKB_LDFLAGS_OTHER:INTERNAL=
+PKG_XKB_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+PKG_XKB_LIBRARIES:INTERNAL=xkbcommon
+PKG_XKB_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
 PKG_XKB_LIBS:INTERNAL=
 PKG_XKB_LIBS_L:INTERNAL=
 PKG_XKB_LIBS_OTHER:INTERNAL=
 PKG_XKB_LIBS_PATHS:INTERNAL=
-PKG_XKB_MODULE_NAME:INTERNAL=
-PKG_XKB_PREFIX:INTERNAL=
-PKG_XKB_STATIC_CFLAGS:INTERNAL=
+PKG_XKB_MODULE_NAME:INTERNAL=xkbcommon
+PKG_XKB_PREFIX:INTERNAL=/usr
+PKG_XKB_STATIC_CFLAGS:INTERNAL=-I/usr/include
 PKG_XKB_STATIC_CFLAGS_I:INTERNAL=
 PKG_XKB_STATIC_CFLAGS_OTHER:INTERNAL=
+PKG_XKB_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_XKB_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lxkbcommon
+PKG_XKB_STATIC_LDFLAGS_OTHER:INTERNAL=
 PKG_XKB_STATIC_LIBDIR:INTERNAL=
+PKG_XKB_STATIC_LIBRARIES:INTERNAL=xkbcommon
+PKG_XKB_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
 PKG_XKB_STATIC_LIBS:INTERNAL=
 PKG_XKB_STATIC_LIBS_L:INTERNAL=
 PKG_XKB_STATIC_LIBS_OTHER:INTERNAL=
 PKG_XKB_STATIC_LIBS_PATHS:INTERNAL=
-PKG_XKB_VERSION:INTERNAL=
+PKG_XKB_VERSION:INTERNAL=1.6.0
+PKG_XKB_xkbcommon_INCLUDEDIR:INTERNAL=
+PKG_XKB_xkbcommon_LIBDIR:INTERNAL=
+PKG_XKB_xkbcommon_PREFIX:INTERNAL=
+PKG_XKB_xkbcommon_VERSION:INTERNAL=
 //Qt feature: abstractbutton (from target Qt6::Widgets)
 QT_FEATURE_abstractbutton:INTERNAL=ON
 //Qt feature: abstractslider (from target Qt6::Widgets)
@@ -706,6 +725,10 @@ QT_FEATURE_broken_threadlocal_dtors:INTERNAL=OFF
 QT_FEATURE_brotli:INTERNAL=ON
 //Qt feature: buttongroup (from target Qt6::Widgets)
 QT_FEATURE_buttongroup:INTERNAL=ON
+//Qt feature: c11 (from target Qt6::Core)
+QT_FEATURE_c11:INTERNAL=ON
+//Qt feature: c99 (from target Qt6::Core)
+QT_FEATURE_c99:INTERNAL=ON
 //Qt feature: calendarwidget (from target Qt6::Widgets)
 QT_FEATURE_calendarwidget:INTERNAL=ON
 //Qt feature: cborstreamreader (from target Qt6::Core)
@@ -752,10 +775,18 @@ QT_FEATURE_cssparser:INTERNAL=ON
 QT_FEATURE_ctf:INTERNAL=OFF
 //Qt feature: cursor (from target Qt6::Gui)
 QT_FEATURE_cursor:INTERNAL=ON
+//Qt feature: cxx11 (from target Qt6::Core)
+QT_FEATURE_cxx11:INTERNAL=ON
 //Qt feature: cxx11_future (from target Qt6::Core)
 QT_FEATURE_cxx11_future:INTERNAL=ON
+//Qt feature: cxx14 (from target Qt6::Core)
+QT_FEATURE_cxx14:INTERNAL=ON
+//Qt feature: cxx17 (from target Qt6::Core)
+QT_FEATURE_cxx17:INTERNAL=ON
 //Qt feature: cxx17_filesystem (from target Qt6::Core)
 QT_FEATURE_cxx17_filesystem:INTERNAL=ON
+//Qt feature: cxx1z (from target Qt6::Core)
+QT_FEATURE_cxx1z:INTERNAL=ON
 //Qt feature: cxx20 (from target Qt6::Core)
 QT_FEATURE_cxx20:INTERNAL=OFF
 //Qt feature: cxx23_stacktrace (from target Qt6::Core)
@@ -858,6 +889,8 @@ QT_FEATURE_errormessage:INTERNAL=ON
 QT_FEATURE_etw:INTERNAL=OFF
 //Qt feature: evdev (from target Qt6::Gui)
 QT_FEATURE_evdev:INTERNAL=ON
+//Qt feature: eventfd (from target Qt6::Core)
+QT_FEATURE_eventfd:INTERNAL=ON
 //Qt feature: f16c (from target Qt6::Core)
 QT_FEATURE_f16c:INTERNAL=ON
 //Qt feature: filedialog (from target Qt6::Widgets)
@@ -888,6 +921,8 @@ QT_FEATURE_freetype:INTERNAL=ON
 QT_FEATURE_fscompleter:INTERNAL=ON
 //Qt feature: futimens (from target Qt6::Core)
 QT_FEATURE_futimens:INTERNAL=ON
+//Qt feature: futimes (from target Qt6::Core)
+QT_FEATURE_futimes:INTERNAL=OFF
 //Qt feature: future (from target Qt6::Core)
 QT_FEATURE_future:INTERNAL=ON
 //Qt feature: gbm (from target Qt6::Gui)
@@ -901,11 +936,13 @@ QT_FEATURE_getauxval:INTERNAL=ON
 //Qt feature: getentropy (from target Qt6::Core)
 QT_FEATURE_getentropy:INTERNAL=ON
 //Qt feature: getifaddrs (from target Qt6::Network)
-QT_FEATURE_getifaddrs:INTERNAL=OFF
+QT_FEATURE_getifaddrs:INTERNAL=ON
 //Qt feature: gif (from target Qt6::Gui)
 QT_FEATURE_gif:INTERNAL=ON
 //Qt feature: glib (from target Qt6::Core)
 QT_FEATURE_glib:INTERNAL=ON
+//Qt feature: glibc (from target Qt6::Core)
+QT_FEATURE_glibc:INTERNAL=ON
 //Qt feature: glibc_fortify_source (from target Qt6::Core)
 QT_FEATURE_glibc_fortify_source:INTERNAL=ON
 //Qt feature: graphicseffect (from target Qt6::Widgets)
@@ -936,6 +973,8 @@ QT_FEATURE_ico:INTERNAL=ON
 QT_FEATURE_icu:INTERNAL=ON
 //Qt feature: identityproxymodel (from target Qt6::Core)
 QT_FEATURE_identityproxymodel:INTERNAL=ON
+//Qt feature: ifr_index (from target Qt6::Network)
+QT_FEATURE_ifr_index:INTERNAL=OFF
 //Qt feature: im (from target Qt6::Gui)
 QT_FEATURE_im:INTERNAL=ON
 //Qt feature: image_heuristic_mask (from target Qt6::Gui)
@@ -969,7 +1008,7 @@ QT_FEATURE_integrityhid:INTERNAL=OFF
 //Qt feature: intelcet (from target Qt6::Core)
 QT_FEATURE_intelcet:INTERNAL=ON
 //Qt feature: ipv6ifname (from target Qt6::Network)
-QT_FEATURE_ipv6ifname:INTERNAL=OFF
+QT_FEATURE_ipv6ifname:INTERNAL=ON
 //Qt feature: islamiccivilcalendar (from target Qt6::Core)
 QT_FEATURE_islamiccivilcalendar:INTERNAL=ON
 //Qt feature: itemmodel (from target Qt6::Core)
@@ -1074,6 +1113,8 @@ QT_FEATURE_networklistmanager:INTERNAL=OFF
 QT_FEATURE_networkproxy:INTERNAL=ON
 //Qt feature: no_direct_extern_access (from target Qt6::Core)
 QT_FEATURE_no_direct_extern_access:INTERNAL=OFF
+//Qt feature: no_prefix (from target Qt6::Core)
+QT_FEATURE_no_prefix:INTERNAL=OFF
 //Qt feature: ocsp (from target Qt6::Network)
 QT_FEATURE_ocsp:INTERNAL=ON
 //Qt feature: opengl (from target Qt6::Gui)
@@ -1086,14 +1127,14 @@ QT_FEATURE_opengles3:INTERNAL=OFF
 QT_FEATURE_opengles31:INTERNAL=OFF
 //Qt feature: opengles32 (from target Qt6::Gui)
 QT_FEATURE_opengles32:INTERNAL=OFF
-//Qt feature: openssl (from target Qt6::Core)
+//Qt feature: openssl (from target Qt6::Network)
 QT_FEATURE_openssl:INTERNAL=ON
 //Qt feature: openssl_hash (from target Qt6::Core)
 QT_FEATURE_openssl_hash:INTERNAL=OFF
-//Qt feature: openssl_linked (from target Qt6::Core)
+//Qt feature: openssl_linked (from target Qt6::Network)
 QT_FEATURE_openssl_linked:INTERNAL=OFF
-//Qt feature: opensslv11 (from target Qt6::Core)
-QT_FEATURE_opensslv11:INTERNAL=OFF
+//Qt feature: opensslv11 (from target Qt6::Network)
+QT_FEATURE_opensslv11:INTERNAL=ON
 //Qt feature: opensslv30 (from target Qt6::Core)
 QT_FEATURE_opensslv30:INTERNAL=ON
 //Qt feature: openvg (from target Qt6::Gui)
@@ -1170,6 +1211,10 @@ QT_FEATURE_qt3d_opengl_renderer:INTERNAL=ON
 QT_FEATURE_qt3d_render:INTERNAL=ON
 //Qt feature: qt3d_rhi_renderer (from target Qt6::3DRender)
 QT_FEATURE_qt3d_rhi_renderer:INTERNAL=ON
+//Qt feature: qt3d_simd_avx2 (from target Qt6::3DCore)
+QT_FEATURE_qt3d_simd_avx2:INTERNAL=OFF
+//Qt feature: qt3d_simd_sse2 (from target Qt6::3DCore)
+QT_FEATURE_qt3d_simd_sse2:INTERNAL=ON
 //Qt feature: qt3d_system_assimp (from target Qt6::3DCore)
 QT_FEATURE_qt3d_system_assimp:INTERNAL=ON
 //Qt feature: qt3d_vulkan (from target Qt6::3DRender)
@@ -1187,7 +1232,7 @@ QT_FEATURE_rdseed:INTERNAL=ON
 //Qt feature: reduce_exports (from target Qt6::Core)
 QT_FEATURE_reduce_exports:INTERNAL=ON
 //Qt feature: reduce_relocations (from target Qt6::Core)
-QT_FEATURE_reduce_relocations:INTERNAL=OFF
+QT_FEATURE_reduce_relocations:INTERNAL=ON
 //Qt feature: regularexpression (from target Qt6::Core)
 QT_FEATURE_regularexpression:INTERNAL=ON
 //Qt feature: relocatable (from target Qt6::Core)
@@ -1272,6 +1317,8 @@ QT_FEATURE_ssse3:INTERNAL=ON
 QT_FEATURE_stack_clash_protection:INTERNAL=ON
 //Qt feature: stack_protector (from target Qt6::Core)
 QT_FEATURE_stack_protector:INTERNAL=ON
+//Qt feature: stack_protector_strong (from target Qt6::Core)
+QT_FEATURE_stack_protector_strong:INTERNAL=OFF
 //Qt feature: stackedwidget (from target Qt6::Widgets)
 QT_FEATURE_stackedwidget:INTERNAL=ON
 //Qt feature: standarditemmodel (from target Qt6::Gui)
@@ -1282,6 +1329,8 @@ QT_FEATURE_static:INTERNAL=OFF
 QT_FEATURE_statusbar:INTERNAL=ON
 //Qt feature: statustip (from target Qt6::Widgets)
 QT_FEATURE_statustip:INTERNAL=ON
+//Qt feature: statx (from target Qt6::Core)
+QT_FEATURE_statx:INTERNAL=ON
 //Qt feature: std_atomic64 (from target Qt6::Core)
 QT_FEATURE_std_atomic64:INTERNAL=ON
 //Qt feature: stdlib_libcpp (from target Qt6::Core)
@@ -1325,7 +1374,7 @@ QT_FEATURE_system_proxies:INTERNAL=ON
 //Qt feature: system_textmarkdownreader (from target Qt6::Gui)
 QT_FEATURE_system_textmarkdownreader:INTERNAL=ON
 //Qt feature: system_xcb_xinput (from target Qt6::Gui)
-QT_FEATURE_system_xcb_xinput:INTERNAL=ON
+QT_FEATURE_system_xcb_xinput:INTERNAL=OFF
 //Qt feature: system_zlib (from target Qt6::Core)
 QT_FEATURE_system_zlib:INTERNAL=ON
 //Qt feature: systemsemaphore (from target Qt6::Core)
@@ -1496,5 +1545,9 @@ _CMAKE_C_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+__pkg_config_arguments_PKG_XKB:INTERNAL=QUIET;xkbcommon
 __pkg_config_checked_PKG_XKB:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_XKB_xkbcommon
+pkgcfg_lib_PKG_XKB_xkbcommon-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
 
