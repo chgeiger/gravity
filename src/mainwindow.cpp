@@ -1,15 +1,11 @@
 #include "mainwindow.h"
 #include "spherewidget.h"
+#include "markersettingspanel.h"
 #include <QColor>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QWidget>
-#include <QFormLayout>
-#include <QGroupBox>
-#include <QLineEdit>
-#include <QSpinBox>
-#include <QPushButton>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -43,41 +39,14 @@ MainWindow::MainWindow(QWidget *parent)
     title->setStyleSheet("font-weight: 600; font-size: 16px;");
     panelLayout->addWidget(title);
 
-    auto *markerGroup = new QGroupBox("Marker erzeugen", settingsPanel);
-    auto *markerForm = new QFormLayout(markerGroup);
-    markerForm->setLabelAlignment(Qt::AlignLeft);
-    markerForm->setFormAlignment(Qt::AlignTop);
-
-    auto *countEdit = new QLineEdit(markerGroup);
-    countEdit->setText("8");
-    countEdit->setPlaceholderText("z. B. 8");
-
-    auto *speedMinEdit = new QLineEdit(markerGroup);
-    speedMinEdit->setText("0.2");
-    speedMinEdit->setPlaceholderText("z. B. 0.2");
-    auto *speedMaxEdit = new QLineEdit(markerGroup);
-    speedMaxEdit->setText("0.8");
-    speedMaxEdit->setPlaceholderText("z. B. 0.8");
-
-    auto *sizeMinEdit = new QLineEdit(markerGroup);
-    sizeMinEdit->setText("0.05");
-    sizeMinEdit->setPlaceholderText("z. B. 0.05");
-    auto *sizeMaxEdit = new QLineEdit(markerGroup);
-    sizeMaxEdit->setText("0.15");
-    sizeMaxEdit->setPlaceholderText("z. B. 0.2");
-
-    markerForm->addRow("Anzahl", countEdit);
-    markerForm->addRow("Geschwindigkeit min", speedMinEdit);
-    markerForm->addRow("Geschwindigkeit max", speedMaxEdit);
-    markerForm->addRow("Größe min", sizeMinEdit);
-    markerForm->addRow("Größe max", sizeMaxEdit);
-
-    panelLayout->addWidget(markerGroup);
-
-    auto *generateButton = new QPushButton("Marker erzeugen", settingsPanel);
-    generateButton->setMinimumHeight(32);
-    panelLayout->addWidget(generateButton);
+    markerSettingsPanel = new MarkerSettingsPanel(settingsPanel);
+    panelLayout->addWidget(markerSettingsPanel);
     panelLayout->addStretch(1);
+
+    connect(markerSettingsPanel, &MarkerSettingsPanel::generateRequested, this,
+            [this](int count, float speedMin, float speedMax, float sizeMin, float sizeMax) {
+                sphereWidget->generateMarkers(count, speedMin, speedMax, sizeMin, sizeMax);
+            });
 
     layout->addWidget(container, 1);
     layout->addWidget(settingsPanel, 0);

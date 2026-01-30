@@ -118,10 +118,24 @@ CMakeFiles/Gravity.dir/src/mainwindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Gravity.dir/src/mainwindow.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chris/devel/gravity/src/mainwindow.cpp -o CMakeFiles/Gravity.dir/src/mainwindow.cpp.s
 
+CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o: CMakeFiles/Gravity.dir/flags.make
+CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o: /home/chris/devel/gravity/src/markersettingspanel.cpp
+CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o: CMakeFiles/Gravity.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o -MF CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o.d -o CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o -c /home/chris/devel/gravity/src/markersettingspanel.cpp
+
+CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chris/devel/gravity/src/markersettingspanel.cpp > CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.i
+
+CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chris/devel/gravity/src/markersettingspanel.cpp -o CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.s
+
 CMakeFiles/Gravity.dir/src/spherewidget.cpp.o: CMakeFiles/Gravity.dir/flags.make
 CMakeFiles/Gravity.dir/src/spherewidget.cpp.o: /home/chris/devel/gravity/src/spherewidget.cpp
 CMakeFiles/Gravity.dir/src/spherewidget.cpp.o: CMakeFiles/Gravity.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Gravity.dir/src/spherewidget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Gravity.dir/src/spherewidget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Gravity.dir/src/spherewidget.cpp.o -MF CMakeFiles/Gravity.dir/src/spherewidget.cpp.o.d -o CMakeFiles/Gravity.dir/src/spherewidget.cpp.o -c /home/chris/devel/gravity/src/spherewidget.cpp
 
 CMakeFiles/Gravity.dir/src/spherewidget.cpp.i: cmake_force
@@ -135,7 +149,7 @@ CMakeFiles/Gravity.dir/src/spherewidget.cpp.s: cmake_force
 CMakeFiles/Gravity.dir/src/surface_marker.cpp.o: CMakeFiles/Gravity.dir/flags.make
 CMakeFiles/Gravity.dir/src/surface_marker.cpp.o: /home/chris/devel/gravity/src/surface_marker.cpp
 CMakeFiles/Gravity.dir/src/surface_marker.cpp.o: CMakeFiles/Gravity.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Gravity.dir/src/surface_marker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Gravity.dir/src/surface_marker.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Gravity.dir/src/surface_marker.cpp.o -MF CMakeFiles/Gravity.dir/src/surface_marker.cpp.o.d -o CMakeFiles/Gravity.dir/src/surface_marker.cpp.o -c /home/chris/devel/gravity/src/surface_marker.cpp
 
 CMakeFiles/Gravity.dir/src/surface_marker.cpp.i: cmake_force
@@ -151,6 +165,7 @@ Gravity_OBJECTS = \
 "CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/Gravity.dir/src/main.cpp.o" \
 "CMakeFiles/Gravity.dir/src/mainwindow.cpp.o" \
+"CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o" \
 "CMakeFiles/Gravity.dir/src/spherewidget.cpp.o" \
 "CMakeFiles/Gravity.dir/src/surface_marker.cpp.o"
 
@@ -160,6 +175,7 @@ Gravity_EXTERNAL_OBJECTS =
 Gravity: CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o
 Gravity: CMakeFiles/Gravity.dir/src/main.cpp.o
 Gravity: CMakeFiles/Gravity.dir/src/mainwindow.cpp.o
+Gravity: CMakeFiles/Gravity.dir/src/markersettingspanel.cpp.o
 Gravity: CMakeFiles/Gravity.dir/src/spherewidget.cpp.o
 Gravity: CMakeFiles/Gravity.dir/src/surface_marker.cpp.o
 Gravity: CMakeFiles/Gravity.dir/build.make
@@ -177,7 +193,7 @@ Gravity: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 Gravity: /usr/lib/x86_64-linux-gnu/libGLX.so
 Gravity: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 Gravity: CMakeFiles/Gravity.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Gravity"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chris/devel/gravity/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Gravity"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Gravity.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

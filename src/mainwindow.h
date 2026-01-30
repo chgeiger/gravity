@@ -14,6 +14,7 @@ public:
 private:
     SphereWidget *sphereWidget;
     QWidget *settingsPanel;
+    class MarkerSettingsPanel *markerSettingsPanel;
 };
 
 #endif // MAINWINDOW_H

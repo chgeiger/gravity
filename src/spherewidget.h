@@ -31,6 +31,8 @@ class SphereWidget : public Qt3DExtras::Qt3DWindow {
 public:
     SphereWidget();
     ~SphereWidget() = default;
+
+    void generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax);
     
     inline void setBackgroundColor(const QColor &color) {
         auto fg = defaultFrameGraph();
@@ -48,10 +50,12 @@ private:
     void createLighting(Qt3DCore::QEntity *rootEntity);
     void createMarkers(Qt3DCore::QEntity *rootEntity);
     void updateMarkers(float deltaSeconds);
+    void clearMarkers();
 
     Qt3DCore::QTransform *sphereTransform;
     float rotationAngle;
     Qt3DExtras::QOrbitCameraController *cameraController;
+    Qt3DCore::QEntity *rootEntity;
     struct MarkerState {
         SurfaceMarker *marker;
         QVector3D position; // unit vector on sphere

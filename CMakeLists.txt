@@ -12,6 +12,8 @@ add_executable(${PROJECT_NAME}
     src/main.cpp
     src/mainwindow.h
     src/mainwindow.cpp
+    src/markersettingspanel.h
+    src/markersettingspanel.cpp
     src/spherewidget.h
     src/spherewidget.cpp
     src/surface_marker.h

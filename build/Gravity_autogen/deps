@@ -7,6 +7,8 @@ Gravity_autogen/timestamp: \
 	/home/chris/devel/gravity/src/main.cpp \
 	/home/chris/devel/gravity/src/mainwindow.cpp \
 	/home/chris/devel/gravity/src/mainwindow.h \
+	/home/chris/devel/gravity/src/markersettingspanel.cpp \
+	/home/chris/devel/gravity/src/markersettingspanel.h \
 	/home/chris/devel/gravity/src/spherewidget.cpp \
 	/home/chris/devel/gravity/src/spherewidget.h \
 	/home/chris/devel/gravity/src/surface_marker.cpp \
@@ -457,6 +459,7 @@ Gravity_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglexports.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qtopenglglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \

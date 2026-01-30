@@ -67,14 +67,14 @@ include CMakeFiles/Gravity_autogen_timestamp_deps.dir/compiler_depend.make
 include CMakeFiles/Gravity_autogen_timestamp_deps.dir/progress.make
 
 CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
-CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
-CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
 CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
-CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
 CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt63DRender.so.6.4.2
 CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt63DCore.so.6.4.2
-CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt63DExtras.so.6.4.2
+CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
+CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
 CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt63DInput.so.6.4.2
+CMakeFiles/Gravity_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt63DExtras.so.6.4.2
 
 Gravity_autogen_timestamp_deps: CMakeFiles/Gravity_autogen_timestamp_deps
 Gravity_autogen_timestamp_deps: CMakeFiles/Gravity_autogen_timestamp_deps.dir/build.make

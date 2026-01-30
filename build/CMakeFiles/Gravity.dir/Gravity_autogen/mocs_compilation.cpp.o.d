@@ -342,6 +342,10 @@ CMakeFiles/Gravity.dir/Gravity_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qcursor.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
+ /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/moc_markersettingspanel.cpp \
+ /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/../../../src/markersettingspanel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/moc_spherewidget.cpp \
  /home/chris/devel/gravity/build/Gravity_autogen/UVLADIE3JM/../../../src/spherewidget.h \
  /usr/include/x86_64-linux-gnu/qt6/Qt3DExtras/Qt3DWindow \

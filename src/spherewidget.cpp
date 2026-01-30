@@ -10,9 +10,15 @@
 #include <QTimer>
 #include <QDebug>
 #include <QtMath>
+#include <QRandomGenerator>
+#include <algorithm>
 
 SphereWidget::SphereWidget()
-    : Qt3DExtras::Qt3DWindow(), rotationAngle(0.0f), sphereTransform(nullptr), cameraController(nullptr)
+    : Qt3DExtras::Qt3DWindow(),
+      rotationAngle(0.0f),
+      sphereTransform(nullptr),
+      cameraController(nullptr),
+      rootEntity(nullptr)
 {
     setTitle("Gravity Simulator - Qt3D");
 
@@ -49,7 +55,7 @@ Qt3DCore::QEntity *SphereWidget::createScene()
     qDebug() << "Creating Qt3D scene...";
     
     // Root entity
-    auto *rootEntity = new Qt3DCore::QEntity();
+    rootEntity = new Qt3DCore::QEntity();
     
     // Create lighting and sphere
     createLighting(rootEntity);
@@ -67,18 +73,53 @@ void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
         return;
     }
 
-    constexpr float sphereRadius = 1.0f;
-    constexpr float markerRadius = 0.3f;
+    generateMarkers(8, 0.2f, 0.8f, 0.05f, 0.15f);
+}
 
-    auto fromLatLon = [](float latDeg, float lonDeg) {
-        const float latRad = qDegreesToRadians(latDeg);
-        const float lonRad = qDegreesToRadians(lonDeg);
-        const float cosLat = qCos(latRad);
-        return QVector3D(
-            cosLat * qCos(lonRad),
-            qSin(latRad),
-            cosLat * qSin(lonRad)
-        ).normalized();
+void SphereWidget::clearMarkers()
+{
+    for (auto &state : markers) {
+        if (state.marker) {
+            if (auto *entity = state.marker->entity()) {
+                delete entity;
+            }
+            delete state.marker;
+        }
+    }
+    markers.clear();
+}
+
+void SphereWidget::generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax)
+{
+    if (!rootEntity) {
+        return;
+    }
+
+    clearMarkers();
+
+    if (count <= 0) {
+        return;
+    }
+
+    if (speedMax < speedMin) {
+        std::swap(speedMin, speedMax);
+    }
+    if (sizeMax < sizeMin) {
+        std::swap(sizeMin, sizeMax);
+    }
+
+    constexpr float sphereRadius = 1.0f;
+    auto *rng = QRandomGenerator::global();
+
+    auto randRange = [rng](double minValue, double maxValue) {
+        return minValue + (maxValue - minValue) * rng->generateDouble();
+    };
+
+    auto randomUnitVector = [&]() {
+        const float z = static_cast<float>(randRange(-1.0, 1.0));
+        const float t = static_cast<float>(randRange(0.0, 2.0 * M_PI));
+        const float r = qSqrt(qMax(0.0f, 1.0f - z * z));
+        return QVector3D(r * qCos(t), z, r * qSin(t)).normalized();
     };
 
     auto tangentDirection = [](const QVector3D &pos, const QVector3D &dir) {
@@ -92,20 +133,23 @@ void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
         return tangent.normalized();
     };
 
-    auto *markerA = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(220, 60, 60));
-    const QVector3D posA = fromLatLon(25.0f, 10.0f);
-    markerA->setSphericalPosition(25.0f, 10.0f);
-    markers.append({markerA, posA, tangentDirection(posA, QVector3D(1.0f, 0.2f, 0.5f)) * 0.6f});
+    for (int i = 0; i < count; ++i) {
+        const QVector3D position = randomUnitVector();
+        const float latDeg = qRadiansToDegrees(qAsin(position.y()));
+        const float lonDeg = qRadiansToDegrees(qAtan2(position.z(), position.x()));
 
-    auto *markerB = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(60, 200, 120));
-    const QVector3D posB = fromLatLon(-10.0f, 120.0f);
-    markerB->setSphericalPosition(-10.0f, 120.0f);
-    markers.append({markerB, posB, tangentDirection(posB, QVector3D(-0.2f, 1.0f, 0.3f)) * 0.5f});
+        const float markerRadius = static_cast<float>(randRange(sizeMin, sizeMax));
+        const float speed = static_cast<float>(randRange(speedMin, speedMax));
 
-    auto *markerC = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, QColor(80, 120, 220));
-    const QVector3D posC = fromLatLon(45.0f, -60.0f);
-    markerC->setSphericalPosition(45.0f, -60.0f);
-    markers.append({markerC, posC, tangentDirection(posC, QVector3D(0.4f, 0.1f, -1.0f)) * 0.55f});
+        const QColor color = QColor::fromHsv(rng->bounded(0, 360), 200, 230);
+        auto *marker = new SurfaceMarker(rootEntity, sphereRadius, markerRadius, color);
+        marker->setSphericalPosition(latDeg, lonDeg);
+
+        const QVector3D dir = randomUnitVector();
+        const QVector3D velocity = tangentDirection(position, dir) * speed;
+
+        markers.append({marker, position, velocity});
+    }
 }
 
 void SphereWidget::createLighting(Qt3DCore::QEntity *rootEntity)

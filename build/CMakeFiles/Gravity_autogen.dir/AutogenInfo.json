@@ -260,6 +260,12 @@
 			null
 		],
 		[
+			"/home/chris/devel/gravity/src/markersettingspanel.h",
+			"MU",
+			"UVLADIE3JM/moc_markersettingspanel.cpp",
+			null
+		],
+		[
 			"/home/chris/devel/gravity/src/spherewidget.h",
 			"MU",
 			"UVLADIE3JM/moc_spherewidget.cpp",
@@ -354,6 +360,7 @@
 	[
 		[ "/home/chris/devel/gravity/src/main.cpp", "MU", null ],
 		[ "/home/chris/devel/gravity/src/mainwindow.cpp", "MU", null ],
+		[ "/home/chris/devel/gravity/src/markersettingspanel.cpp", "MU", null ],
 		[ "/home/chris/devel/gravity/src/spherewidget.cpp", "MU", null ],
 		[ "/home/chris/devel/gravity/src/surface_marker.cpp", "MU", null ]
 	],
