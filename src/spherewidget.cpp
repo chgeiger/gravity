@@ -21,7 +21,8 @@ SphereWidget::SphereWidget()
     rootEntity(nullptr),
     animationTimer(nullptr),
     animationEnabled(true),
-    highlightedMarkerIndex(-1)
+    highlightedMarkerIndex(-1),
+    selectedMarkerIndex(-1)
 {
     setTitle("Gravity Simulator - Qt3D");
 
@@ -90,6 +91,8 @@ void SphereWidget::clearMarkers()
         }
     }
     markers.clear();
+    highlightedMarkerIndex = -1;
+    selectedMarkerIndex = -1;
 }
 
 void SphereWidget::generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax)
@@ -374,8 +377,10 @@ void SphereWidget::updateMarkers(float deltaSeconds)
     }
 
     for (int i = 0; i < markers.size(); ++i) {
-        // Überspringe den hervorgehobenen Marker
-        if (i == highlightedMarkerIndex) {
+        // Prüfe ob dieser Marker selektiert oder hervorgehoben ist
+        if (i == selectedMarkerIndex || i == highlightedMarkerIndex) {
+            // Für selektierte/hervorgehobene Marker: verwende updateMarkerColor
+            updateMarkerColor(i);
             continue;
         }
         
@@ -509,39 +514,53 @@ QVector<SphereWidget::MarkerInfo> SphereWidget::getMarkersInfo() const
 void SphereWidget::highlightMarker(int markerIndex)
 {
     qDebug() << "highlightMarker called with index:" << markerIndex << "total markers:" << markers.size();
-    
-    // Stelle die vorherige hervorgehobene Farbe wieder her
-    if (highlightedMarkerIndex >= 0 && highlightedMarkerIndex < markers.size()) {
-        qDebug() << "Restoring color for marker:" << highlightedMarkerIndex;
-        markers[highlightedMarkerIndex].color = highlightedMarkerOriginalColor;
-        if (markers[highlightedMarkerIndex].marker) {
-            markers[highlightedMarkerIndex].marker->setColor(highlightedMarkerOriginalColor);
-        }
+
+    const int previousIndex = highlightedMarkerIndex;
+    highlightedMarkerIndex = (markerIndex >= 0 && markerIndex < markers.size()) ? markerIndex : -1;
+
+    if (previousIndex >= 0 && previousIndex < markers.size()) {
+        updateMarkerColor(previousIndex);
     }
-    
-    // Speichere die neue hervorgehobene Marker-Info
-    if (markerIndex >= 0 && markerIndex < markers.size()) {
-        qDebug() << "Highlighting marker:" << markerIndex;
-        highlightedMarkerIndex = markerIndex;
-        highlightedMarkerOriginalColor = markers[markerIndex].color;
-        qDebug() << "Original color:" << highlightedMarkerOriginalColor;
-        markers[markerIndex].color = QColor(255, 0, 0); // Rot
-        if (markers[markerIndex].marker) {
-            qDebug() << "Setting marker color to red";
-            markers[markerIndex].marker->setColor(QColor(255, 0, 0));
-        } else {
-            qDebug() << "Warning: marker pointer is null!";
-        }
+
+    if (highlightedMarkerIndex >= 0 && highlightedMarkerIndex < markers.size()) {
+        updateMarkerColor(highlightedMarkerIndex);
     }
 }
 
 void SphereWidget::clearHighlightedMarker()
 {
-    if (highlightedMarkerIndex >= 0 && highlightedMarkerIndex < markers.size()) {
-        markers[highlightedMarkerIndex].color = highlightedMarkerOriginalColor;
-        if (markers[highlightedMarkerIndex].marker) {
-            markers[highlightedMarkerIndex].marker->setColor(highlightedMarkerOriginalColor);
-        }
-        highlightedMarkerIndex = -1;
+    highlightMarker(-1);
+}
+
+void SphereWidget::setSelectedMarker(int markerIndex)
+{
+    const int previousIndex = selectedMarkerIndex;
+    selectedMarkerIndex = (markerIndex >= 0 && markerIndex < markers.size()) ? markerIndex : -1;
+
+    if (previousIndex >= 0 && previousIndex < markers.size()) {
+        updateMarkerColor(previousIndex);
+    }
+
+    if (selectedMarkerIndex >= 0 && selectedMarkerIndex < markers.size()) {
+        updateMarkerColor(selectedMarkerIndex);
+    }
+}
+
+void SphereWidget::updateMarkerColor(int markerIndex)
+{
+    if (markerIndex < 0 || markerIndex >= markers.size()) {
+        return;
+    }
+
+    QColor colorToApply = markers[markerIndex].color;
+
+    if (selectedMarkerIndex == markerIndex) {
+        colorToApply = QColor(0, 255, 0);
+    } else if (highlightedMarkerIndex == markerIndex) {
+        colorToApply = QColor(255, 0, 0);
+    }
+
+    if (markers[markerIndex].marker) {
+        markers[markerIndex].marker->setColor(colorToApply);
     }
 }

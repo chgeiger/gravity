@@ -163,6 +163,11 @@ MainWindow::MainWindow(QWidget *parent)
         sphereWidget->zoomOut();
     });
 
+    connect(markerSelectionCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+            [this](int index) {
+                sphereWidget->setSelectedMarker(index);
+            });
+
     connect(markersTreeWidget, &QTreeWidget::itemClicked, this, &MainWindow::onMarkerSelectionChanged);
 
     layout->addWidget(container, 1);
@@ -177,6 +182,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::refreshMarkersTree()
 {
     markersTreeWidget->clear();
+    const int previousComboIndex = markerSelectionCombo ? markerSelectionCombo->currentIndex() : -1;
     if (markerSelectionCombo) {
         markerSelectionCombo->clear();
     }
@@ -222,6 +228,18 @@ void MainWindow::refreshMarkersTree()
 
         if (markerSelectionCombo) {
             markerSelectionCombo->addItem(QString("Marker %1").arg(markerInfo.index + 1));
+        }
+    }
+
+    if (markerSelectionCombo) {
+        if (markers.isEmpty()) {
+            markerSelectionCombo->setCurrentIndex(0);
+            sphereWidget->setSelectedMarker(-1);
+        } else {
+            const int maxIndex = markers.size() - 1;
+            const int nextIndex = qBound(0, previousComboIndex, maxIndex);
+            markerSelectionCombo->setCurrentIndex(nextIndex);
+            sphereWidget->setSelectedMarker(nextIndex);
         }
     }
 }

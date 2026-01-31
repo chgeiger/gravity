@@ -41,6 +41,7 @@ public:
     void zoomIn();
     void zoomOut();
     void highlightMarker(int markerIndex);
+    void setSelectedMarker(int markerIndex);
     void clearHighlightedMarker();
     
     struct MarkerInfo {
@@ -72,6 +73,7 @@ private:
     void createMarkers(Qt3DCore::QEntity *rootEntity);
     void updateMarkers(float deltaSeconds);
     void handleCollisions(QVector<bool> &colliding);
+    void updateMarkerColor(int markerIndex);
 
     Qt3DCore::QTransform *sphereTransform;
     Qt3DExtras::QOrbitCameraController *cameraController;
@@ -89,7 +91,7 @@ private:
     QTimer *animationTimer;
     bool animationEnabled;
     int highlightedMarkerIndex;
-    QColor highlightedMarkerOriginalColor;
+    int selectedMarkerIndex;
 };
 
 #endif // SPHEREWIDGET_H
