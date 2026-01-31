@@ -22,7 +22,9 @@ SphereWidget::SphereWidget()
     animationTimer(nullptr),
     animationEnabled(true),
     highlightedMarkerIndex(-1),
-    selectedMarkerIndex(-1)
+    selectedMarkerIndex(-1),
+    followMarkerEnabled(false),
+    followMarkerDistance(3.5f)
 {
     setTitle("Gravity Simulator - Qt3D");
 
@@ -302,6 +304,29 @@ void SphereWidget::updateFrame()
     lastFrameMs = nowMs;
 
     updateMarkers(deltaSeconds);
+    
+    // Kamera dem Marker folgen lassen
+    if (followMarkerEnabled && selectedMarkerIndex >= 0 && selectedMarkerIndex < markers.size()) {
+        auto *cam = camera();
+        const QVector3D markerPos = markers[selectedMarkerIndex].position.normalized();
+        
+        // Neue Kamera-Position: in Richtung des Markers, mit konfigurierter Distanz
+        const QVector3D newCamPos = markerPos * followMarkerDistance;
+        
+        // Interpolation für sanfte Bewegung
+        const QVector3D currentPos = cam->position();
+        const QVector3D smoothPos = currentPos + (newCamPos - currentPos) * 0.1f;
+        
+        cam->setPosition(smoothPos);
+        cam->setViewCenter(QVector3D(0, 0, 0));
+        
+        // Up-Vektor anpassen (senkrecht zur Marker-Position)
+        QVector3D up = QVector3D(0, 1, 0);
+        up -= QVector3D::dotProduct(up, markerPos) * markerPos;
+        if (up.lengthSquared() > 1e-6f) {
+            cam->setUpVector(up.normalized());
+        }
+    }
 }
 
 void SphereWidget::updateMarkers(float deltaSeconds)
@@ -485,6 +510,7 @@ void SphereWidget::zoomIn()
     QVector3D pos = cam->position();
     pos *= 0.9f;  // 10% näher
     cam->setPosition(pos);
+    followMarkerDistance = pos.length();
 }
 
 void SphereWidget::zoomOut()
@@ -493,6 +519,7 @@ void SphereWidget::zoomOut()
     QVector3D pos = cam->position();
     pos *= 1.1f;  // 10% weiter weg
     cam->setPosition(pos);
+    followMarkerDistance = pos.length();
 }
 
 QVector<SphereWidget::MarkerInfo> SphereWidget::getMarkersInfo() const
@@ -562,5 +589,18 @@ void SphereWidget::updateMarkerColor(int markerIndex)
 
     if (markers[markerIndex].marker) {
         markers[markerIndex].marker->setColor(colorToApply);
+    }
+}
+
+void SphereWidget::setFollowMarker(bool enabled)
+{
+    followMarkerEnabled = enabled;
+    if (enabled) {
+        followMarkerDistance = camera()->position().length();
+    }
+    
+    // Deaktiviere den Orbit Controller, wenn Follow aktiv ist
+    if (cameraController) {
+        cameraController->setEnabled(!enabled);
     }
 }

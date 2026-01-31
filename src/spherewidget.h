@@ -43,6 +43,7 @@ public:
     void highlightMarker(int markerIndex);
     void setSelectedMarker(int markerIndex);
     void clearHighlightedMarker();
+    void setFollowMarker(bool enabled);
     
     struct MarkerInfo {
         int index;
@@ -92,6 +93,8 @@ private:
     bool animationEnabled;
     int highlightedMarkerIndex;
     int selectedMarkerIndex;
+    bool followMarkerEnabled;
+        float followMarkerDistance; // Distance for following the marker
 };
 
 #endif // SPHEREWIDGET_H
