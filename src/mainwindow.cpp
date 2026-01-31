@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
     markersTreeWidget->setColumnCount(1);
     objectsLayout->addWidget(markersTreeWidget);
 
-    auto *markerControlsGroup = new QGroupBox("Marker-Kontrolle", objectsTab);
+    auto *markerControlsGroup = new QGroupBox("Marker folgen", objectsTab);
     auto *markerControlsForm = new QFormLayout(markerControlsGroup);
     markerControlsForm->setLabelAlignment(Qt::AlignLeft);
     markerControlsForm->setFormAlignment(Qt::AlignTop);
@@ -83,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent)
     markerSelectionCombo = new QComboBox(markerControlsGroup);
     markerSelectionCombo->addItem("Keine Marker vorhanden");
 
-    markerControlsForm->addRow("Aktion", markerActionCheckBox);
+    markerControlsForm->addRow("Aktiv", markerActionCheckBox);
     markerControlsForm->addRow("Marker wählen", markerSelectionCombo);
 
     objectsLayout->addWidget(markerControlsGroup);
@@ -177,8 +177,20 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::refreshMarkersTree()
 {
     markersTreeWidget->clear();
+    if (markerSelectionCombo) {
+        markerSelectionCombo->clear();
+    }
     
     const auto markers = sphereWidget->getMarkersInfo();
+
+    if (markerSelectionCombo) {
+        if (markers.isEmpty()) {
+            markerSelectionCombo->addItem("Keine Marker vorhanden");
+            markerSelectionCombo->setEnabled(false);
+        } else {
+            markerSelectionCombo->setEnabled(true);
+        }
+    }
     
     for (const auto &markerInfo : markers) {
         auto *markerItem = new QTreeWidgetItem();
@@ -207,6 +219,10 @@ void MainWindow::refreshMarkersTree()
         
         markersTreeWidget->addTopLevelItem(markerItem);
         markerItem->setExpanded(false);
+
+        if (markerSelectionCombo) {
+            markerSelectionCombo->addItem(QString("Marker %1").arg(markerInfo.index + 1));
+        }
     }
 }
 
