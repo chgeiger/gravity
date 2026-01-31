@@ -34,7 +34,7 @@ public:
     SphereWidget();
     ~SphereWidget() = default;
 
-    void generateMarkers(int count, float speedMin, float speedMax, float sizeMin, float sizeMax);
+    void generateMarkers(int count, float speed, float size);
     void setAnimationEnabled(bool enabled);
     bool isAnimationEnabled() const { return animationEnabled; }
     void clearMarkers();

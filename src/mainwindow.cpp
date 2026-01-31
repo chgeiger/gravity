@@ -97,8 +97,8 @@ MainWindow::MainWindow(QWidget *parent)
     panelLayout->addWidget(tabWidget, 1);
 
     connect(markerSettingsPanel, &MarkerSettingsPanel::generateRequested, this,
-            [this](int count, float speedMin, float speedMax, float sizeMin, float sizeMax) {
-                sphereWidget->generateMarkers(count, speedMin, speedMax, sizeMin, sizeMax);
+            [this](int count, float speed, float size) {
+                sphereWidget->generateMarkers(count, speed, size);
                 refreshMarkersTree();
             });
 
@@ -166,6 +166,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(markerSelectionCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
             [this](int index) {
                 sphereWidget->setSelectedMarker(index);
+            });
+
+    connect(markerActionCheckBox, &QCheckBox::toggled, this,
+            [this](bool checked) {
+                sphereWidget->setFollowMarker(checked);
             });
 
     connect(markersTreeWidget, &QTreeWidget::itemClicked, this, &MainWindow::onMarkerSelectionChanged);

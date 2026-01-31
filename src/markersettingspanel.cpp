@@ -29,31 +29,19 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     auto *doubleValidator = new QDoubleValidator(0.0, 100.0, 4, this);
     doubleValidator->setLocale(QLocale::c());
 
-    speedMinEdit = new QLineEdit(markerGroup);
-    speedMinEdit->setText("0.2");
-    speedMinEdit->setPlaceholderText("z. B. 0.2");
-    speedMinEdit->setValidator(doubleValidator);
+    speedEdit = new QLineEdit(markerGroup);
+    speedEdit->setText("0.5");
+    speedEdit->setPlaceholderText("z. B. 0.5");
+    speedEdit->setValidator(doubleValidator);
 
-    speedMaxEdit = new QLineEdit(markerGroup);
-    speedMaxEdit->setText("0.8");
-    speedMaxEdit->setPlaceholderText("z. B. 0.8");
-    speedMaxEdit->setValidator(doubleValidator);
-
-    sizeMinEdit = new QLineEdit(markerGroup);
-    sizeMinEdit->setText("0.05");
-    sizeMinEdit->setPlaceholderText("z. B. 0.05");
-    sizeMinEdit->setValidator(doubleValidator);
-
-    sizeMaxEdit = new QLineEdit(markerGroup);
-    sizeMaxEdit->setText("0.15");
-    sizeMaxEdit->setPlaceholderText("z. B. 0.2");
-    sizeMaxEdit->setValidator(doubleValidator);
+    sizeEdit = new QLineEdit(markerGroup);
+    sizeEdit->setText("0.1");
+    sizeEdit->setPlaceholderText("z. B. 0.1");
+    sizeEdit->setValidator(doubleValidator);
 
     markerForm->addRow("Anzahl", countEdit);
-    markerForm->addRow("Geschwindigkeit min", speedMinEdit);
-    markerForm->addRow("Geschwindigkeit max", speedMaxEdit);
-    markerForm->addRow("Größe min", sizeMinEdit);
-    markerForm->addRow("Größe max", sizeMaxEdit);
+    markerForm->addRow("Geschwindigkeit", speedEdit);
+    markerForm->addRow("Größe", sizeEdit);
 
     layout->addWidget(markerGroup);
 
@@ -111,20 +99,16 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
 void MarkerSettingsPanel::emitGenerate()
 {
     bool okCount = false;
-    bool okSpeedMin = false;
-    bool okSpeedMax = false;
-    bool okSizeMin = false;
-    bool okSizeMax = false;
+    bool okSpeed = false;
+    bool okSize = false;
 
     const int count = countEdit->text().toInt(&okCount);
-    const float speedMin = speedMinEdit->text().toFloat(&okSpeedMin);
-    const float speedMax = speedMaxEdit->text().toFloat(&okSpeedMax);
-    const float sizeMin = sizeMinEdit->text().toFloat(&okSizeMin);
-    const float sizeMax = sizeMaxEdit->text().toFloat(&okSizeMax);
+    const float speed = speedEdit->text().toFloat(&okSpeed);
+    const float size = sizeEdit->text().toFloat(&okSize);
 
-    if (!okCount || !okSpeedMin || !okSpeedMax || !okSizeMin || !okSizeMax) {
+    if (!okCount || !okSpeed || !okSize) {
         return;
     }
 
-    emit generateRequested(count, speedMin, speedMax, sizeMin, sizeMax);
+    emit generateRequested(count, speed, size);
 }
