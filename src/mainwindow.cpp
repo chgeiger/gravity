@@ -13,6 +13,10 @@
 #include <QTabWidget>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QFormLayout>
+#include <QGroupBox>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -61,12 +65,33 @@ MainWindow::MainWindow(QWidget *parent)
     auto *objectsTab = new QWidget();
     auto *objectsLayout = new QVBoxLayout(objectsTab);
     objectsLayout->setContentsMargins(0, 0, 0, 0);
-    objectsLayout->setSpacing(0);
+    objectsLayout->setSpacing(12);
     
     markersTreeWidget = new QTreeWidget(objectsTab);
     markersTreeWidget->setHeaderLabel("Marker");
     markersTreeWidget->setColumnCount(1);
     objectsLayout->addWidget(markersTreeWidget);
+
+    auto *markerControlsGroup = new QGroupBox("Marker-Kontrolle", objectsTab);
+    auto *markerControlsForm = new QFormLayout(markerControlsGroup);
+    markerControlsForm->setLabelAlignment(Qt::AlignLeft);
+    markerControlsForm->setFormAlignment(Qt::AlignTop);
+
+    markerActionCheckBox = new QCheckBox(markerControlsGroup);
+    markerActionCheckBox->setChecked(false);
+
+    markerSelectionCombo = new QComboBox(markerControlsGroup);
+    markerSelectionCombo->addItem("Keine Marker vorhanden");
+
+    markerControlsForm->addRow("Aktion", markerActionCheckBox);
+    markerControlsForm->addRow("Marker wählen", markerSelectionCombo);
+
+    objectsLayout->addWidget(markerControlsGroup);
+    
+    // Baumansicht soll den verfügbaren Platz einnehmen
+    objectsLayout->setStretch(0, 1);
+    objectsLayout->setStretch(1, 0);
+    
     tabWidget->addTab(objectsTab, "Objekte");
     
     panelLayout->addWidget(tabWidget, 1);

@@ -539,4 +539,15 @@ CMakeFiles/Gravity.dir/src/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreewidgetitemiterator.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTreeWidgetItem
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTreeWidgetItem \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCheckBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QComboBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcombobox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFormLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qformlayout.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGroupBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgroupbox.h

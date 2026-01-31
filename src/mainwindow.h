@@ -5,6 +5,8 @@
 
 class SphereWidget;
 class QTreeWidget;
+class QCheckBox;
+class QComboBox;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -20,6 +22,8 @@ private:
     QWidget *settingsPanel;
     class MarkerSettingsPanel *markerSettingsPanel;
     QTreeWidget *markersTreeWidget;
+    QCheckBox *markerActionCheckBox;
+    QComboBox *markerSelectionCombo;
 };
 
 #endif // MAINWINDOW_H

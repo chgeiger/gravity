@@ -308,7 +308,7 @@ void SphereWidget::updateMarkers(float deltaSeconds)
     }
 
     constexpr float sphereRadius = 1.0f;
-    constexpr float gravityConstant = 0.35f;
+    constexpr float gravityConstant = 10.0f;
     const float epsilon = 1e-4f;
 
     QVector<QVector3D> accelerations(markers.size(), QVector3D(0.0f, 0.0f, 0.0f));
