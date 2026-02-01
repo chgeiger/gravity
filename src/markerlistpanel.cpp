@@ -87,6 +87,9 @@ void MarkerListPanel::refreshMarkersTree()
             .arg(markerInfo.color.green())
             .arg(markerInfo.color.blue()));
 
+        auto *densityItem = new QTreeWidgetItem(markerItem);
+        densityItem->setText(0, QString("Dichte: %1").arg(markerInfo.density, 0, 'f', 3));
+
         auto *posItem = new QTreeWidgetItem(markerItem);
         posItem->setText(0, QString("Position: (%1, %2, %3)")
             .arg(markerInfo.position.x(), 0, 'f', 3)
