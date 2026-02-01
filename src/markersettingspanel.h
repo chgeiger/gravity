@@ -6,6 +6,15 @@
 class QLineEdit;
 class QPushButton;
 
+/**
+ * @brief MarkerSettingsPanel - Steuerung fuer Marker-Generierung und Szenarios-Verwaltung
+ * 
+ * Verantwortlichkeiten:
+ * - Eingabeformulare fuer Marker-Generierungsparameter (Anzahl, Geschwindigkeit, Groesse, Dichte)
+ * - Steuerknoepfe fuer Animation, Szenarios-Verwaltung (Speichern/Laden) und Zoom
+ * - Emission von Signalen bei Benutzerinteraktionen
+ * - Verwaltung des Animationsstatus und der UI-Zustandsaenderungen
+ */
 class MarkerSettingsPanel : public QWidget {
     Q_OBJECT
 

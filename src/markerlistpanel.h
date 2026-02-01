@@ -8,6 +8,15 @@ class QCheckBox;
 class QComboBox;
 class SphereWidget;
 
+/**
+ * @brief MarkerListPanel - Verwaltet Marker-Uebersicht und Verfolgungssteuerung
+ * 
+ * Verantwortlichkeiten:
+ * - Anzeige aller Marker in einer Baumansicht mit Details (Radius, Farbe, Position, Geschwindigkeit)
+ * - Verwaltung der Marker-Verfolgungssteuerung (aktiv/inaktiv und Marker-Auswahl)
+ * - Aktualisierung der Baumansicht nach Generierung oder Aenderung von Markern
+ * - Handling von Marker-Auswahl durch die Baumansicht
+ */
 class MarkerListPanel : public QWidget {
     Q_OBJECT
 

@@ -10,6 +10,14 @@ class MarkerListPanel;
 class ScenarioManager;
 class QTabWidget;
 
+/**
+ * @brief MainWindow - Hauptfenster der Anwendung
+ * 
+ * Verantwortlichkeiten:
+ * - Verwaltung der Gesamtoberflaeche und des Fenster-Layouts
+ * - Koordination zwischen den Komponenten (ViewportController, MarkerSettingsPanel, MarkerListPanel, ScenarioManager)
+ * - Verbindung der Signale zwischen den GUI-Komponenten und dem 3D-Widget
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
