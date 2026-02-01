@@ -94,12 +94,6 @@ void MarkerListPanel::refreshMarkersTree()
                     }
                 });
 
-        auto *colorItem = new QTreeWidgetItem(markerItem);
-        colorItem->setText(0, QString("Farbe: RGB(%1, %2, %3)")
-            .arg(markerInfo.color.red())
-            .arg(markerInfo.color.green())
-            .arg(markerInfo.color.blue()));
-
         auto *densityItem = new QTreeWidgetItem(markerItem);
         auto *densityWidget = new EditablePropertyWidget("Dichte:", 
                                                          QString::number(markerInfo.density, 'f', 3));
@@ -114,12 +108,6 @@ void MarkerListPanel::refreshMarkersTree()
                         sphereWidget->setMarkerDensity(markerIndex, density);
                     }
                 });
-
-        auto *posItem = new QTreeWidgetItem(markerItem);
-        posItem->setText(0, QString("Position: (%1, %2, %3)")
-            .arg(markerInfo.position.x(), 0, 'f', 3)
-            .arg(markerInfo.position.y(), 0, 'f', 3)
-            .arg(markerInfo.position.z(), 0, 'f', 3));
 
         auto *velItem = new QTreeWidgetItem(markerItem);
         float velocityMagnitude = markerInfo.velocity.length();
