@@ -306,6 +306,25 @@ void SurfaceMarker::setColor(const QColor &color)
     material->setAmbient(color);
 }
 
+void SurfaceMarker::setMarkerRadius(float radius)
+{
+    if (radius <= 0.0f) {
+        return;
+    }
+    
+    markerRadius = radius;
+    
+    // Erstelle die Geometrie neu mit dem neuen Radius
+    if (geometryRenderer) {
+        delete geometryRenderer;
+    }
+    
+    geometryRenderer = createSphericalCap(surfaceRadius, markerRadius);
+    if (markerEntity && geometryRenderer) {
+        markerEntity->addComponent(geometryRenderer);
+    }
+}
+
 void SurfaceMarker::updateTransform()
 {
     const float latRad = qDegreesToRadians(latitudeDeg);

@@ -615,6 +615,10 @@ void SphereWidget::setMarkerRadius(int markerIndex, float radius)
     
     if (radius > 0) {
         markers[markerIndex].radius = radius;
+        // Aktualisiere auch die 3D-Geometrie
+        if (markers[markerIndex].marker) {
+            markers[markerIndex].marker->setMarkerRadius(radius);
+        }
     }
 }
 

@@ -26,6 +26,7 @@ public:
 
     void setSphericalPosition(float latitudeDeg, float longitudeDeg);
     void setColor(const QColor &color);
+    void setMarkerRadius(float radius);
 
     Qt3DCore::QEntity *entity() const { return markerEntity; }
 
