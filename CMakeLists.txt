@@ -14,6 +14,12 @@ add_executable(${PROJECT_NAME}
     src/mainwindow.cpp
     src/markersettingspanel.h
     src/markersettingspanel.cpp
+    src/markerlistpanel.h
+    src/markerlistpanel.cpp
+    src/viewportcontroller.h
+    src/viewportcontroller.cpp
+    src/scenariomanager.h
+    src/scenariomanager.cpp
     src/spherewidget.h
     src/spherewidget.cpp
     src/surface_marker.h
@@ -29,3 +35,4 @@ target_link_libraries(${PROJECT_NAME}
     Qt6::3DInput
     Qt6::3DExtras
 )
+

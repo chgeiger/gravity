@@ -79,7 +79,7 @@ void SphereWidget::createMarkers(Qt3DCore::QEntity *rootEntity)
         return;
     }
 
-    generateMarkers(8, 0.5f, 0.1f);
+    generateMarkers(8, 0.5f, 0.1f, 1.0f);
 }
 
 void SphereWidget::clearMarkers()
@@ -97,7 +97,7 @@ void SphereWidget::clearMarkers()
     selectedMarkerIndex = -1;
 }
 
-void SphereWidget::generateMarkers(int count, float speed, float size)
+void SphereWidget::generateMarkers(int count, float speed, float size, float density)
 {
     if (!rootEntity) {
         return;
@@ -145,7 +145,7 @@ void SphereWidget::generateMarkers(int count, float speed, float size)
         const QVector3D dir = randomUnitVector();
         const QVector3D velocity = tangentDirection(position, dir) * speed;
 
-        markers.append({marker, position, velocity, size, baseColor});
+        markers.append({marker, position, velocity, size, density, baseColor});
     }
 }
 
@@ -161,6 +161,7 @@ QJsonObject SphereWidget::exportScenario() const
     for (const auto &state : markers) {
         QJsonObject markerObj;
         markerObj["radius"] = state.radius;
+        markerObj["density"] = state.density;
         markerObj["color"] = QJsonArray{state.color.red(), state.color.green(), state.color.blue()};
         markerObj["position"] = QJsonArray{state.position.x(), state.position.y(), state.position.z()};
         markerObj["velocity"] = QJsonArray{state.velocity.x(), state.velocity.y(), state.velocity.z()};
@@ -197,6 +198,7 @@ bool SphereWidget::applyScenario(const QJsonObject &scenario)
         }
 
         const float radius = static_cast<float>(markerObj["radius"].toDouble(0.1));
+        const float density = static_cast<float>(markerObj["density"].toDouble(1.0));
         const QColor color(
             colorArr[0].toInt(255),
             colorArr[1].toInt(255),
@@ -221,7 +223,7 @@ bool SphereWidget::applyScenario(const QJsonObject &scenario)
         const float lonDeg = qRadiansToDegrees(qAtan2(posNorm.z(), posNorm.x()));
         marker->setSphericalPosition(latDeg, lonDeg);
 
-        markers.append({marker, posNorm, velocity, radius, color});
+        markers.append({marker, posNorm, velocity, radius, density, color});
     }
 
     const bool animEnabled = scenario["animationEnabled"].toBool(true);
@@ -351,8 +353,8 @@ void SphereWidget::updateMarkers(float deltaSeconds)
             ti.normalize();
             tj.normalize();
 
-            const float mi = markers[i].radius * markers[i].radius * markers[i].radius;
-            const float mj = markers[j].radius * markers[j].radius * markers[j].radius;
+            const float mi = markers[i].density * markers[i].radius * markers[i].radius * markers[i].radius;
+            const float mj = markers[j].density * markers[j].radius * markers[j].radius * markers[j].radius;
 
             const float forceMagnitude = gravityConstant * mi * mj * ((1.0f / (arc * arc)) - (1.0f / (otherArc * otherArc)));
 
@@ -520,6 +522,7 @@ QVector<SphereWidget::MarkerInfo> SphereWidget::getMarkersInfo() const
         result.append({
             i,
             state.radius,
+            state.density,
             state.color,
             state.position,
             state.velocity

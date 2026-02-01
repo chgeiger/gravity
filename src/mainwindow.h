@@ -2,28 +2,29 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <memory>
 
-class SphereWidget;
-class QTreeWidget;
-class QCheckBox;
-class QComboBox;
+class ViewportController;
+class MarkerSettingsPanel;
+class MarkerListPanel;
+class ScenarioManager;
+class QTabWidget;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
 private:
-    void refreshMarkersTree();
-    void onMarkerSelectionChanged();
+    std::unique_ptr<ViewportController> viewportController;
+    std::unique_ptr<ScenarioManager> scenarioManager;
     
-    SphereWidget *sphereWidget;
     QWidget *settingsPanel;
-    class MarkerSettingsPanel *markerSettingsPanel;
-    QTreeWidget *markersTreeWidget;
-    QCheckBox *markerActionCheckBox;
-    QComboBox *markerSelectionCombo;
+    MarkerSettingsPanel *markerSettingsPanel;
+    MarkerListPanel *markerListPanel;
+    QTabWidget *tabWidget;
 };
 
 #endif // MAINWINDOW_H

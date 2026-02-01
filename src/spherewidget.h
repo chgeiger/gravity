@@ -34,7 +34,7 @@ public:
     SphereWidget();
     ~SphereWidget() = default;
 
-    void generateMarkers(int count, float speed, float size);
+    void generateMarkers(int count, float speed, float size, float density);
     void setAnimationEnabled(bool enabled);
     bool isAnimationEnabled() const { return animationEnabled; }
     void clearMarkers();
@@ -48,6 +48,7 @@ public:
     struct MarkerInfo {
         int index;
         float radius;
+        float density;
         QColor color;
         QVector3D position;
         QVector3D velocity;
@@ -84,6 +85,7 @@ private:
         QVector3D position; // unit vector on sphere
         QVector3D velocity; // tangent vector (units: sphere radii per second)
         float radius;
+        float density;
         QColor color;
     };
     QVector<MarkerState> markers;
@@ -94,7 +96,7 @@ private:
     int highlightedMarkerIndex;
     int selectedMarkerIndex;
     bool followMarkerEnabled;
-        float followMarkerDistance; // Distance for following the marker
+    float followMarkerDistance; // Distance for following the marker
 };
 
 #endif // SPHEREWIDGET_H

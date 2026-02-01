@@ -39,9 +39,15 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     sizeEdit->setPlaceholderText("z. B. 0.1");
     sizeEdit->setValidator(doubleValidator);
 
+    densityEdit = new QLineEdit(markerGroup);
+    densityEdit->setText("1.0");
+    densityEdit->setPlaceholderText("z. B. 1.0");
+    densityEdit->setValidator(doubleValidator);
+
     markerForm->addRow("Anzahl", countEdit);
     markerForm->addRow("Geschwindigkeit", speedEdit);
     markerForm->addRow("Größe", sizeEdit);
+    markerForm->addRow("Dichte", densityEdit);
 
     layout->addWidget(markerGroup);
 
@@ -101,14 +107,16 @@ void MarkerSettingsPanel::emitGenerate()
     bool okCount = false;
     bool okSpeed = false;
     bool okSize = false;
+    bool okDensity = false;
 
     const int count = countEdit->text().toInt(&okCount);
     const float speed = speedEdit->text().toFloat(&okSpeed);
     const float size = sizeEdit->text().toFloat(&okSize);
+    const float density = densityEdit->text().toFloat(&okDensity);
 
-    if (!okCount || !okSpeed || !okSize) {
+    if (!okCount || !okSpeed || !okSize || !okDensity) {
         return;
     }
 
-    emit generateRequested(count, speed, size);
+    emit generateRequested(count, speed, size, density);
 }

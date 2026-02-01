@@ -13,7 +13,7 @@ public:
     explicit MarkerSettingsPanel(QWidget *parent = nullptr);
 
 signals:
-    void generateRequested(int count, float speed, float size);
+    void generateRequested(int count, float speed, float size, float density);
     void animationToggled(bool running);
     void saveRequested();
     void loadRequested();
@@ -27,6 +27,7 @@ private:
     QLineEdit *countEdit;
     QLineEdit *speedEdit;
     QLineEdit *sizeEdit;
+    QLineEdit *densityEdit;
     QPushButton *generateButton;
     QPushButton *toggleAnimationButton;
     QPushButton *saveButton;
