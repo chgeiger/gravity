@@ -1,5 +1,6 @@
 #include "markerlistpanel.h"
 #include "spherewidget.h"
+#include "editablepropertywidget.h"
 
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -88,7 +89,19 @@ void MarkerListPanel::refreshMarkersTree()
             .arg(markerInfo.color.blue()));
 
         auto *densityItem = new QTreeWidgetItem(markerItem);
-        densityItem->setText(0, QString("Dichte: %1").arg(markerInfo.density, 0, 'f', 3));
+        auto *densityWidget = new EditablePropertyWidget("Dichte:", 
+                                                         QString::number(markerInfo.density, 'f', 3));
+        markersTreeWidget->setItemWidget(densityItem, 0, densityWidget);
+        
+        // Verbinde Aenderungen mit der Simulation
+        connect(densityWidget, &EditablePropertyWidget::valueChanged, this,
+                [this, markerIndex = markerInfo.index](const QString &newValue) {
+                    bool ok;
+                    float density = newValue.toFloat(&ok);
+                    if (ok && density > 0) {
+                        sphereWidget->setMarkerDensity(markerIndex, density);
+                    }
+                });
 
         auto *posItem = new QTreeWidgetItem(markerItem);
         posItem->setText(0, QString("Position: (%1, %2, %3)")

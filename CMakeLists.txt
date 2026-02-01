@@ -16,6 +16,8 @@ add_executable(${PROJECT_NAME}
     src/markersettingspanel.cpp
     src/markerlistpanel.h
     src/markerlistpanel.cpp
+    src/editablepropertywidget.h
+    src/editablepropertywidget.cpp
     src/viewportcontroller.h
     src/viewportcontroller.cpp
     src/scenariomanager.h

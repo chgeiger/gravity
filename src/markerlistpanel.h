@@ -7,6 +7,7 @@ class QTreeWidget;
 class QCheckBox;
 class QComboBox;
 class SphereWidget;
+class EditablePropertyWidget;
 
 /**
  * @brief MarkerListPanel - Verwaltet Marker-Uebersicht und Verfolgungssteuerung

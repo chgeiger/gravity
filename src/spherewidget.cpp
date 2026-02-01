@@ -597,3 +597,12 @@ void SphereWidget::setFollowMarker(bool enabled)
         cameraController->setEnabled(!enabled);
     }
 }
+
+void SphereWidget::setMarkerDensity(int markerIndex, float density)
+{
+    if (markerIndex < 0 || markerIndex >= markers.size()) {
+        return;
+    }
+    
+    markers[markerIndex].density = density;
+}

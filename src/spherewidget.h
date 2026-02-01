@@ -44,6 +44,7 @@ public:
     void setSelectedMarker(int markerIndex);
     void clearHighlightedMarker();
     void setFollowMarker(bool enabled);
+    void setMarkerDensity(int markerIndex, float density);
     
     struct MarkerInfo {
         int index;
