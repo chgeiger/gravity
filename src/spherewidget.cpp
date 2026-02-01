@@ -606,3 +606,34 @@ void SphereWidget::setMarkerDensity(int markerIndex, float density)
     
     markers[markerIndex].density = density;
 }
+
+void SphereWidget::setMarkerRadius(int markerIndex, float radius)
+{
+    if (markerIndex < 0 || markerIndex >= markers.size()) {
+        return;
+    }
+    
+    if (radius > 0) {
+        markers[markerIndex].radius = radius;
+    }
+}
+
+void SphereWidget::setMarkerVelocityMagnitude(int markerIndex, float magnitude)
+{
+    if (markerIndex < 0 || markerIndex >= markers.size()) {
+        return;
+    }
+    
+    // Behalte die Richtung, aendere nur den Betrag
+    QVector3D currentVelocity = markers[markerIndex].velocity;
+    float currentMagnitude = currentVelocity.length();
+    
+    if (currentMagnitude > 0.0001f) {
+        // Normalisiere und skaliere mit neuem Betrag
+        QVector3D direction = currentVelocity.normalized();
+        markers[markerIndex].velocity = direction * magnitude;
+    } else {
+        // Falls Geschwindigkeit ~0 ist, setze neue Richtung in Z
+        markers[markerIndex].velocity = QVector3D(0, 0, magnitude);
+    }
+}

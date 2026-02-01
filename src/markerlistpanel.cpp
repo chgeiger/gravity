@@ -80,7 +80,19 @@ void MarkerListPanel::refreshMarkersTree()
         markerItem->setText(0, QString("Marker %1").arg(markerInfo.index + 1));
 
         auto *radiusItem = new QTreeWidgetItem(markerItem);
-        radiusItem->setText(0, QString("Radius: %1").arg(markerInfo.radius, 0, 'f', 3));
+        auto *radiusWidget = new EditablePropertyWidget("Radius:", 
+                                                        QString::number(markerInfo.radius, 'f', 3));
+        markersTreeWidget->setItemWidget(radiusItem, 0, radiusWidget);
+        
+        // Verbinde Aenderungen mit der Simulation
+        connect(radiusWidget, &EditablePropertyWidget::valueChanged, this,
+                [this, markerIndex = markerInfo.index](const QString &newValue) {
+                    bool ok;
+                    float radius = newValue.toFloat(&ok);
+                    if (ok && radius > 0) {
+                        sphereWidget->setMarkerRadius(markerIndex, radius);
+                    }
+                });
 
         auto *colorItem = new QTreeWidgetItem(markerItem);
         colorItem->setText(0, QString("Farbe: RGB(%1, %2, %3)")
@@ -110,10 +122,20 @@ void MarkerListPanel::refreshMarkersTree()
             .arg(markerInfo.position.z(), 0, 'f', 3));
 
         auto *velItem = new QTreeWidgetItem(markerItem);
-        velItem->setText(0, QString("Geschwindigkeit: (%1, %2, %3)")
-            .arg(markerInfo.velocity.x(), 0, 'f', 3)
-            .arg(markerInfo.velocity.y(), 0, 'f', 3)
-            .arg(markerInfo.velocity.z(), 0, 'f', 3));
+        float velocityMagnitude = markerInfo.velocity.length();
+        auto *velocityWidget = new EditablePropertyWidget("Geschwindigkeit:", 
+                                                          QString::number(velocityMagnitude, 'f', 3));
+        markersTreeWidget->setItemWidget(velItem, 0, velocityWidget);
+        
+        // Verbinde Aenderungen mit der Simulation
+        connect(velocityWidget, &EditablePropertyWidget::valueChanged, this,
+                [this, markerIndex = markerInfo.index](const QString &newValue) {
+                    bool ok;
+                    float magnitude = newValue.toFloat(&ok);
+                    if (ok && magnitude >= 0) {
+                        sphereWidget->setMarkerVelocityMagnitude(markerIndex, magnitude);
+                    }
+                });
 
         markersTreeWidget->addTopLevelItem(markerItem);
         markerItem->setExpanded(false);
