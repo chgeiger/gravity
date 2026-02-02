@@ -6,6 +6,7 @@
 class QTreeWidget;
 class QCheckBox;
 class QComboBox;
+class QGroupBox;
 class SphereWidget;
 class EditablePropertyWidget;
 
@@ -28,12 +29,20 @@ public:
 
 private slots:
     void onMarkerSelectionChanged();
+    void updateSelectedMarkerProperties();
 
 private:
     SphereWidget *sphereWidget;
     QTreeWidget *markersTreeWidget;
     QCheckBox *markerActionCheckBox;
     QComboBox *markerSelectionCombo;
+    
+    // Eigenschaften des ausgewählten Markers
+    QGroupBox *selectedMarkerGroup;
+    EditablePropertyWidget *selectedRadiusWidget;
+    EditablePropertyWidget *selectedDensityWidget;
+    EditablePropertyWidget *selectedVelocityWidget;
+    int currentlySelectedMarkerIndex;
 };
 
 #endif // MARKERLISTPANEL_H
