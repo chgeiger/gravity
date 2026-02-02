@@ -11,13 +11,14 @@
 #include <QDebug>
 
 MarkerListPanel::MarkerListPanel(SphereWidget *sphereWidget, QWidget *parent)
-    : QWidget(parent), sphereWidget(sphereWidget), currentlySelectedMarkerIndex(-1)
+    : QWidget(parent), sphereWidget(sphereWidget)
 {
     auto *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(12);
 
     markersListWidget = new QListWidget(this);
+    markersListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
     layout->addWidget(markersListWidget);
 
     // Gruppe für ausgewählten Marker
@@ -41,33 +42,33 @@ MarkerListPanel::MarkerListPanel(SphereWidget *sphereWidget, QWidget *parent)
     // Verbinde Änderungen mit der Simulation
     connect(selectedRadiusWidget, &EditablePropertyWidget::valueChanged, this,
             [this](const QString &newValue) {
-                if (currentlySelectedMarkerIndex >= 0) {
-                    bool ok;
-                    float radius = newValue.toFloat(&ok);
-                    if (ok && radius > 0) {
-                        this->sphereWidget->setMarkerRadius(currentlySelectedMarkerIndex, radius);
+                bool ok;
+                float radius = newValue.toFloat(&ok);
+                if (ok && radius > 0) {
+                    for (int markerIndex : selectedMarkerIndices) {
+                        this->sphereWidget->setMarkerRadius(markerIndex, radius);
                     }
                 }
             });
 
     connect(selectedDensityWidget, &EditablePropertyWidget::valueChanged, this,
             [this](const QString &newValue) {
-                if (currentlySelectedMarkerIndex >= 0) {
-                    bool ok;
-                    float density = newValue.toFloat(&ok);
-                    if (ok && density > 0) {
-                        this->sphereWidget->setMarkerDensity(currentlySelectedMarkerIndex, density);
+                bool ok;
+                float density = newValue.toFloat(&ok);
+                if (ok && density > 0) {
+                    for (int markerIndex : selectedMarkerIndices) {
+                        this->sphereWidget->setMarkerDensity(markerIndex, density);
                     }
                 }
             });
 
     connect(selectedVelocityWidget, &EditablePropertyWidget::valueChanged, this,
             [this](const QString &newValue) {
-                if (currentlySelectedMarkerIndex >= 0) {
-                    bool ok;
-                    float magnitude = newValue.toFloat(&ok);
-                    if (ok && magnitude >= 0) {
-                        this->sphereWidget->setMarkerVelocityMagnitude(currentlySelectedMarkerIndex, magnitude);
+                bool ok;
+                float magnitude = newValue.toFloat(&ok);
+                if (ok && magnitude >= 0) {
+                    for (int markerIndex : selectedMarkerIndices) {
+                        this->sphereWidget->setMarkerVelocityMagnitude(markerIndex, magnitude);
                     }
                 }
             });
@@ -103,7 +104,7 @@ MarkerListPanel::MarkerListPanel(SphereWidget *sphereWidget, QWidget *parent)
                 this->sphereWidget->setFollowMarker(checked);
             });
 
-    connect(markersListWidget, &QListWidget::itemClicked, this, &MarkerListPanel::onMarkerSelectionChanged);
+    connect(markersListWidget, &QListWidget::itemSelectionChanged, this, &MarkerListPanel::onMarkerSelectionChanged);
 }
 
 void MarkerListPanel::refreshMarkersTree()
@@ -150,48 +151,106 @@ void MarkerListPanel::onMarkerSelectionChanged()
 {
     qDebug() << "onMarkerSelectionChanged called";
 
-    auto *selectedItem = markersListWidget->currentItem();
+    auto selectedItems = markersListWidget->selectedItems();
 
-    if (!selectedItem) {
-        qDebug() << "No item selected";
+    if (selectedItems.isEmpty()) {
+        qDebug() << "No items selected";
         sphereWidget->clearHighlightedMarker();
-        currentlySelectedMarkerIndex = -1;
+        selectedMarkerIndices.clear();
         selectedMarkerGroup->setVisible(false);
         return;
     }
 
-    // Finde den Index des Markers in der Liste
-    int markerIndex = markersListWidget->row(selectedItem);
-    qDebug() << "Marker index:" << markerIndex;
+    // Sammle alle ausgewählten Marker-Indizes
+    selectedMarkerIndices.clear();
+    for (auto *item : selectedItems) {
+        int markerIndex = markersListWidget->row(item);
+        if (markerIndex >= 0) {
+            selectedMarkerIndices.append(markerIndex);
+        }
+    }
 
-    if (markerIndex >= 0) {
-        sphereWidget->highlightMarker(markerIndex);
-        currentlySelectedMarkerIndex = markerIndex;
+    qDebug() << "Selected marker indices:" << selectedMarkerIndices;
+
+    // Highlighte den ersten ausgewählten Marker
+    if (!selectedMarkerIndices.isEmpty()) {
+        sphereWidget->highlightMarker(selectedMarkerIndices.first());
         updateSelectedMarkerProperties();
     }
 }
 
 void MarkerListPanel::updateSelectedMarkerProperties()
 {
-    if (currentlySelectedMarkerIndex < 0) {
+    if (selectedMarkerIndices.isEmpty()) {
         selectedMarkerGroup->setVisible(false);
         return;
     }
 
     const auto markers = sphereWidget->getMarkersInfo();
-    if (currentlySelectedMarkerIndex >= markers.size()) {
-        selectedMarkerGroup->setVisible(false);
-        return;
+    
+    // Prüfe ob alle Indizes gültig sind
+    for (int index : selectedMarkerIndices) {
+        if (index >= markers.size()) {
+            selectedMarkerGroup->setVisible(false);
+            return;
+        }
     }
 
-    const auto &markerInfo = markers[currentlySelectedMarkerIndex];
+    // Titel setzen
+    if (selectedMarkerIndices.size() == 1) {
+        selectedMarkerGroup->setTitle(QString("Marker %1").arg(selectedMarkerIndices.first() + 1));
+    } else {
+        selectedMarkerGroup->setTitle(QString("%1 Marker ausgewählt").arg(selectedMarkerIndices.size()));
+    }
+
+    // Prüfe ob alle ausgewählten Marker den gleichen Radius haben
+    bool sameRadius = true;
+    float firstRadius = markers[selectedMarkerIndices.first()].radius;
+    for (int i = 1; i < selectedMarkerIndices.size(); ++i) {
+        if (qAbs(markers[selectedMarkerIndices[i]].radius - firstRadius) > 0.0001f) {
+            sameRadius = false;
+            break;
+        }
+    }
     
-    selectedMarkerGroup->setTitle(QString("Marker %1").arg(markerInfo.index + 1));
-    selectedRadiusWidget->setValue(QString::number(markerInfo.radius, 'f', 3));
-    selectedDensityWidget->setValue(QString::number(markerInfo.density, 'f', 3));
+    if (sameRadius) {
+        selectedRadiusWidget->setValue(QString::number(firstRadius, 'f', 3));
+    } else {
+        selectedRadiusWidget->setValue("");
+    }
+
+    // Prüfe ob alle ausgewählten Marker die gleiche Dichte haben
+    bool sameDensity = true;
+    float firstDensity = markers[selectedMarkerIndices.first()].density;
+    for (int i = 1; i < selectedMarkerIndices.size(); ++i) {
+        if (qAbs(markers[selectedMarkerIndices[i]].density - firstDensity) > 0.0001f) {
+            sameDensity = false;
+            break;
+        }
+    }
     
-    float velocityMagnitude = markerInfo.velocity.length();
-    selectedVelocityWidget->setValue(QString::number(velocityMagnitude, 'f', 3));
+    if (sameDensity) {
+        selectedDensityWidget->setValue(QString::number(firstDensity, 'f', 3));
+    } else {
+        selectedDensityWidget->setValue("");
+    }
+
+    // Prüfe ob alle ausgewählten Marker die gleiche Geschwindigkeit haben
+    bool sameVelocity = true;
+    float firstVelocityMagnitude = markers[selectedMarkerIndices.first()].velocity.length();
+    for (int i = 1; i < selectedMarkerIndices.size(); ++i) {
+        float velocityMagnitude = markers[selectedMarkerIndices[i]].velocity.length();
+        if (qAbs(velocityMagnitude - firstVelocityMagnitude) > 0.0001f) {
+            sameVelocity = false;
+            break;
+        }
+    }
+    
+    if (sameVelocity) {
+        selectedVelocityWidget->setValue(QString::number(firstVelocityMagnitude, 'f', 3));
+    } else {
+        selectedVelocityWidget->setValue("");
+    }
     
     selectedMarkerGroup->setVisible(true);
 }

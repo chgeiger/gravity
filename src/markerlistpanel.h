@@ -42,7 +42,7 @@ private:
     EditablePropertyWidget *selectedRadiusWidget;
     EditablePropertyWidget *selectedDensityWidget;
     EditablePropertyWidget *selectedVelocityWidget;
-    int currentlySelectedMarkerIndex;
+    QVector<int> selectedMarkerIndices;
 };
 
 #endif // MARKERLISTPANEL_H
