@@ -47,6 +47,7 @@ public:
     void setMarkerDensity(int markerIndex, float density);
     void setMarkerRadius(int markerIndex, float radius);
     void setMarkerVelocityMagnitude(int markerIndex, float magnitude);
+    void setTimeScale(float scale);
     
     struct MarkerInfo {
         int index;
@@ -100,6 +101,7 @@ private:
     int selectedMarkerIndex;
     bool followMarkerEnabled;
     float followMarkerDistance; // Distance for following the marker
+    float timeScale; // Time scale factor for simulation speed
 };
 
 #endif // SPHEREWIDGET_H

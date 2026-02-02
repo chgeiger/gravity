@@ -5,9 +5,12 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QIntValidator>
 #include <QDoubleValidator>
 #include <QLocale>
+#include <QSlider>
+#include <QLabel>
 
 MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     : QWidget(parent)
@@ -88,6 +91,28 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
 
     layout->addLayout(zoomLayout);
 
+    // Berechnungsgenauigkeit Slider
+    auto *timeScaleGroup = new QGroupBox("Berechnungsgeschwindigkeit", this);
+    auto *timeScaleLayout = new QVBoxLayout(timeScaleGroup);
+    
+    auto *sliderLayout = new QHBoxLayout();
+    auto *slowLabel = new QLabel("Langsam", this);
+    sliderLayout->addWidget(slowLabel);
+    
+    timeScaleSlider = new QSlider(Qt::Horizontal, this);
+    timeScaleSlider->setMinimum(1);  // 0.01x
+    timeScaleSlider->setMaximum(50);  // 5.0x
+    timeScaleSlider->setValue(25);    // 2.5x (Mitte zwischen 0.01 und 5.0 auf log-Skala wäre ~0.7, aber linear Mitte ist 2.55)
+    timeScaleSlider->setTickPosition(QSlider::TicksBelow);
+    timeScaleSlider->setTickInterval(10);
+    sliderLayout->addWidget(timeScaleSlider, 1);
+    
+    auto *fastLabel = new QLabel("Schnell", this);
+    sliderLayout->addWidget(fastLabel);
+    
+    timeScaleLayout->addLayout(sliderLayout);
+    layout->addWidget(timeScaleGroup);
+
     layout->addStretch(1);
 
     connect(generateButton, &QPushButton::clicked, this, &MarkerSettingsPanel::emitGenerate);
@@ -100,6 +125,14 @@ MarkerSettingsPanel::MarkerSettingsPanel(QWidget *parent)
     connect(clearButton, &QPushButton::clicked, this, &MarkerSettingsPanel::clearAllMarkersRequested);
     connect(zoomInButton, &QPushButton::clicked, this, &MarkerSettingsPanel::zoomInRequested);
     connect(zoomOutButton, &QPushButton::clicked, this, &MarkerSettingsPanel::zoomOutRequested);
+    connect(timeScaleSlider, &QSlider::valueChanged, this, [this](int value) {
+        // Konvertiere von 10-50 zu 0.1-5.0
+        float scale = value / 10.0f;
+        emit timeScaleChanged(scale);
+    });
+    
+    // Initial time scale setzen
+    emit timeScaleChanged(2.5f);
 }
 
 void MarkerSettingsPanel::emitGenerate()

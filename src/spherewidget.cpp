@@ -24,7 +24,8 @@ SphereWidget::SphereWidget()
     highlightedMarkerIndex(-1),
     selectedMarkerIndex(-1),
     followMarkerEnabled(false),
-    followMarkerDistance(3.5f)
+    followMarkerDistance(3.5f),
+    timeScale(1.0f)
 {
     setTitle("Gravity Simulator - Qt3D");
 
@@ -295,7 +296,9 @@ void SphereWidget::updateFrame()
     const float deltaSeconds = qMax(0.0f, (nowMs - lastFrameMs) / 1000.0f);
     lastFrameMs = nowMs;
 
-    updateMarkers(deltaSeconds);
+    // Wende Zeitskalierung an
+    const float scaledDelta = deltaSeconds * timeScale;
+    updateMarkers(scaledDelta);
     
     // Kamera dem Marker folgen lassen
     if (followMarkerEnabled && selectedMarkerIndex >= 0 && selectedMarkerIndex < markers.size()) {
@@ -640,4 +643,9 @@ void SphereWidget::setMarkerVelocityMagnitude(int markerIndex, float magnitude)
         // Falls Geschwindigkeit ~0 ist, setze neue Richtung in Z
         markers[markerIndex].velocity = QVector3D(0, 0, magnitude);
     }
+}
+
+void SphereWidget::setTimeScale(float scale)
+{
+    timeScale = qBound(0.1f, scale, 10.0f);
 }

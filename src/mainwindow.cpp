@@ -113,6 +113,11 @@ MainWindow::MainWindow(QWidget *parent)
                 viewportController->getSphereWidget()->zoomOut();
             });
 
+    connect(markerSettingsPanel, &MarkerSettingsPanel::timeScaleChanged, this,
+            [this](float scale) {
+                viewportController->getSphereWidget()->setTimeScale(scale);
+            });
+
     // Initial population of markers list
     markerListPanel->refreshMarkersTree();
 }

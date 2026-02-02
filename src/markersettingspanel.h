@@ -5,6 +5,7 @@
 
 class QLineEdit;
 class QPushButton;
+class QSlider;
 
 /**
  * @brief MarkerSettingsPanel - Steuerung fuer Marker-Generierung und Szenarios-Verwaltung
@@ -29,6 +30,7 @@ signals:
     void clearAllMarkersRequested();
     void zoomInRequested();
     void zoomOutRequested();
+    void timeScaleChanged(float scale);
 
 private:
     void emitGenerate();
@@ -44,6 +46,7 @@ private:
     QPushButton *clearButton;
     QPushButton *zoomInButton;
     QPushButton *zoomOutButton;
+    QSlider *timeScaleSlider;
 };
 
 #endif // MARKERSETTINGSPANEL_H
