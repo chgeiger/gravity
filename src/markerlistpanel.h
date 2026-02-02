@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-class QTreeWidget;
+class QListWidget;
 class QCheckBox;
 class QComboBox;
 class QGroupBox;
@@ -33,7 +33,7 @@ private slots:
 
 private:
     SphereWidget *sphereWidget;
-    QTreeWidget *markersTreeWidget;
+    QListWidget *markersListWidget;
     QCheckBox *markerActionCheckBox;
     QComboBox *markerSelectionCombo;
     

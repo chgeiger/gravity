@@ -2,8 +2,7 @@
 #include "spherewidget.h"
 #include "editablepropertywidget.h"
 
-#include <QTreeWidget>
-#include <QTreeWidgetItem>
+#include <QListWidget>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFormLayout>
@@ -18,10 +17,8 @@ MarkerListPanel::MarkerListPanel(SphereWidget *sphereWidget, QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(12);
 
-    markersTreeWidget = new QTreeWidget(this);
-    markersTreeWidget->setHeaderLabel("Marker");
-    markersTreeWidget->setColumnCount(1);
-    layout->addWidget(markersTreeWidget);
+    markersListWidget = new QListWidget(this);
+    layout->addWidget(markersListWidget);
 
     // Gruppe für ausgewählten Marker
     selectedMarkerGroup = new QGroupBox("Ausgewählter Marker", this);
@@ -106,12 +103,12 @@ MarkerListPanel::MarkerListPanel(SphereWidget *sphereWidget, QWidget *parent)
                 this->sphereWidget->setFollowMarker(checked);
             });
 
-    connect(markersTreeWidget, &QTreeWidget::itemClicked, this, &MarkerListPanel::onMarkerSelectionChanged);
+    connect(markersListWidget, &QListWidget::itemClicked, this, &MarkerListPanel::onMarkerSelectionChanged);
 }
 
 void MarkerListPanel::refreshMarkersTree()
 {
-    markersTreeWidget->clear();
+    markersListWidget->clear();
     const int previousComboIndex = markerSelectionCombo ? markerSelectionCombo->currentIndex() : -1;
     if (markerSelectionCombo) {
         markerSelectionCombo->clear();
@@ -129,57 +126,7 @@ void MarkerListPanel::refreshMarkersTree()
     }
 
     for (const auto &markerInfo : markers) {
-        auto *markerItem = new QTreeWidgetItem();
-        markerItem->setText(0, QString("Marker %1").arg(markerInfo.index + 1));
-
-        auto *radiusItem = new QTreeWidgetItem(markerItem);
-        auto *radiusWidget = new EditablePropertyWidget("Radius:", 
-                                                        QString::number(markerInfo.radius, 'f', 3));
-        markersTreeWidget->setItemWidget(radiusItem, 0, radiusWidget);
-        
-        // Verbinde Aenderungen mit der Simulation
-        connect(radiusWidget, &EditablePropertyWidget::valueChanged, this,
-                [this, markerIndex = markerInfo.index](const QString &newValue) {
-                    bool ok;
-                    float radius = newValue.toFloat(&ok);
-                    if (ok && radius > 0) {
-                        sphereWidget->setMarkerRadius(markerIndex, radius);
-                    }
-                });
-
-        auto *densityItem = new QTreeWidgetItem(markerItem);
-        auto *densityWidget = new EditablePropertyWidget("Dichte:", 
-                                                         QString::number(markerInfo.density, 'f', 3));
-        markersTreeWidget->setItemWidget(densityItem, 0, densityWidget);
-        
-        // Verbinde Aenderungen mit der Simulation
-        connect(densityWidget, &EditablePropertyWidget::valueChanged, this,
-                [this, markerIndex = markerInfo.index](const QString &newValue) {
-                    bool ok;
-                    float density = newValue.toFloat(&ok);
-                    if (ok && density > 0) {
-                        sphereWidget->setMarkerDensity(markerIndex, density);
-                    }
-                });
-
-        auto *velItem = new QTreeWidgetItem(markerItem);
-        float velocityMagnitude = markerInfo.velocity.length();
-        auto *velocityWidget = new EditablePropertyWidget("Geschwindigkeit:", 
-                                                          QString::number(velocityMagnitude, 'f', 3));
-        markersTreeWidget->setItemWidget(velItem, 0, velocityWidget);
-        
-        // Verbinde Aenderungen mit der Simulation
-        connect(velocityWidget, &EditablePropertyWidget::valueChanged, this,
-                [this, markerIndex = markerInfo.index](const QString &newValue) {
-                    bool ok;
-                    float magnitude = newValue.toFloat(&ok);
-                    if (ok && magnitude >= 0) {
-                        sphereWidget->setMarkerVelocityMagnitude(markerIndex, magnitude);
-                    }
-                });
-
-        markersTreeWidget->addTopLevelItem(markerItem);
-        markerItem->setExpanded(false);
+        markersListWidget->addItem(QString("Marker %1").arg(markerInfo.index + 1));
 
         if (markerSelectionCombo) {
             markerSelectionCombo->addItem(QString("Marker %1").arg(markerInfo.index + 1));
@@ -203,7 +150,7 @@ void MarkerListPanel::onMarkerSelectionChanged()
 {
     qDebug() << "onMarkerSelectionChanged called";
 
-    QTreeWidgetItem *selectedItem = markersTreeWidget->currentItem();
+    auto *selectedItem = markersListWidget->currentItem();
 
     if (!selectedItem) {
         qDebug() << "No item selected";
@@ -213,18 +160,8 @@ void MarkerListPanel::onMarkerSelectionChanged()
         return;
     }
 
-    qDebug() << "Selected item:" << selectedItem->text(0);
-
-    // Finde den Parent-Item (Top-Level Item)
-    QTreeWidgetItem *markerItem = selectedItem;
-    while (markerItem->parent() != nullptr) {
-        markerItem = markerItem->parent();
-    }
-
-    qDebug() << "Marker item:" << markerItem->text(0);
-
-    // Finde den Index des Markers
-    int markerIndex = markersTreeWidget->indexOfTopLevelItem(markerItem);
+    // Finde den Index des Markers in der Liste
+    int markerIndex = markersListWidget->row(selectedItem);
     qDebug() << "Marker index:" << markerIndex;
 
     if (markerIndex >= 0) {
